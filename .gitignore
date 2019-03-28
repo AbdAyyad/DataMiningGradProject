@@ -1,0 +1,5 @@
+/BackEnd/venv/Lib/
+/FrontEnd/node_modules/
+/FrontEnd/dist/
+/FrontEnd/tmp/
+/FrontEnd/out-tsc/
