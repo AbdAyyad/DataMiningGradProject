@@ -7,6 +7,7 @@ import {PatientSignUpComponent} from './signUpCompenents/patient-sign-up/patient
 import {RouterModule, Routes} from '@angular/router';
 import {SignUpBarComponent} from './signUpCompenents/sign-up-bar/sign-up-bar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {FormsModule} from '@angular/forms';
 
 const route: Routes = [
   {path: 'new/dr', component: DrSignUpComponent},
@@ -24,7 +25,8 @@ const route: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(route)
+    RouterModule.forRoot(route),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

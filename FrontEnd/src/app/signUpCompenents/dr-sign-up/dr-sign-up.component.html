@@ -1,4 +1,6 @@
 <app-sign-up-bar></app-sign-up-bar>
-<p>
-  dr-sign-up works!
-</p>
+<form (ngSubmit)="submit(form)" #form="ngForm">
+  <input type="text" name="drName" placeholder="name">
+  <input type="password" name="drPassword" placeholder="password">
+  <input type="password" name="drConfirmPassword" placeholder="confirm password">
+</form>
