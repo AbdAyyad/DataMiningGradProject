@@ -1,6 +1,10 @@
 {
   "extends": "../tslint.json",
   "rules": {
+    "max-line-length": [
+      true,
+      200
+    ],
     "directive-selector": [
       true,
       "attribute",
