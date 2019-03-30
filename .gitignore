@@ -1,4 +1,5 @@
-/BackEnd/venv/Lib/
+/BackEnd/venv/
+/BackEnd/.idea/
 /FrontEnd/node_modules/
 /FrontEnd/dist/
 /FrontEnd/tmp/
