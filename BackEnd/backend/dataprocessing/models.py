@@ -7,17 +7,16 @@ from django.db import models
 
 
 class Dr(AbstractBaseUser):
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     first_name = models.TextField(max_length=25)
     last_name = models.TextField(max_length=25)
-    birth_date = models.DateField()
+    job_id = models.TextField(max_length=10)
 
 
-class Patient(AbstractBaseUser):
-    email = models.EmailField()
+class Parent(AbstractBaseUser):
+    email = models.EmailField(unique=True)
     first_name = models.TextField(max_length=25)
     last_name = models.TextField(max_length=25)
-    birth_date = models.DateField()
 
 
 class Question(models.Model):
@@ -31,6 +30,7 @@ class Choice(models.Model):
     id = models.AutoField(primary_key=True)
     text = models.TextField(max_length=30)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
+    score = models.DecimalField(decimal_places=3, max_digits=5)
 
 
 class Quiz(models.Model):
@@ -40,7 +40,10 @@ class Quiz(models.Model):
 
 
 class Test(models.Model):
-    patient = models.ForeignKey('Patient', on_delete=models.CASCADE)
+    parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
+    patient_first_name = models.TextField(max_length=300)
+    patient_last_name = models.TextField(max_length=300)
+    result = models.DecimalField(decimal_places=3, max_digits=5)
 
 
 class Answer(models.Model):
