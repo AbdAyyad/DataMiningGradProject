@@ -10,6 +10,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {SignInComponent} from './sign-in/sign-in.component';
+import {AuthGuardService} from '../services/auth-guard.service';
+import {SignUpService} from '../services/sign-up.service';
 
 const route: Routes = [
   {path: 'welcome', component: WelcomeComponent},
@@ -31,7 +33,10 @@ const route: Routes = [
     RouterModule.forRoot(route),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    SignUpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
