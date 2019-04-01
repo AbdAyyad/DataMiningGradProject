@@ -5,13 +5,14 @@ import {AppComponent} from './app.component';
 import {DrSignUpComponent} from './signUpCompenents/dr-sign-up/dr-sign-up.component';
 import {PatientSignUpComponent} from './signUpCompenents/patient-sign-up/patient-sign-up.component';
 import {RouterModule, Routes} from '@angular/router';
-import {SignUpBarComponent} from './signUpCompenents/sign-up-bar/sign-up-bar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {WelcomeBarComponent} from './welcome-bar/welcome-bar.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
+import {WelcomeComponent} from './welcome/welcome.component';
+import {SignInComponent} from './sign-in/sign-in.component';
 
 const route: Routes = [
-  {path: 'new/dr', component: DrSignUpComponent},
-  {path: 'new/patient', component: PatientSignUpComponent},
+  {path: 'welcome', component: WelcomeComponent},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -20,8 +21,10 @@ const route: Routes = [
     AppComponent,
     DrSignUpComponent,
     PatientSignUpComponent,
-    SignUpBarComponent,
-    NotFoundComponent
+    WelcomeBarComponent,
+    NotFoundComponent,
+    WelcomeComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

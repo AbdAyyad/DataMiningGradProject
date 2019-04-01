@@ -1,0 +1,26 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#signInModal">
+  signIn
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signInLabel">Sign in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="submit(form)" #form="ngForm">
+          <input type="email" name="Email" placeholder="Email" class="form-control">
+          <input type="password" name="Password" placeholder="Password" class="form-control">
+          <button type="submit" class="btn btn-primary">sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
