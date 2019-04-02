@@ -16,12 +16,14 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="submit(form)" #form="ngForm">
-          <input type="text" name="patientFirstName" placeholder="First Name" class="form-control">
-          <input type="text" name="patientLastName" placeholder="Last Name" class="form-control">
-          <input type="email" name="patientEmail" placeholder="Email" class="form-control">
-          <input type="password" name="patientPassword" placeholder="Password" class="form-control">
+          <input type="text" ngModel name="patientFirstName" placeholder="First Name" class="form-control">
+          <input type="text" ngModel name="patientLastName" placeholder="Last Name" class="form-control">
+          <input type="email" ngModel name="patientEmail" placeholder="Email" class="form-control">
+          <input type="password" ngModel name="patientPassword" placeholder="Password" class="form-control">
           <input type="password" name="patientConfirmPassword" placeholder="confirm password" class="form-control">
-          <button type="submit" class="btn btn-primary">submit</button>
+          <div style="width: 100%">
+            <button type="submit" class="btn btn-primary" id="patientSignUpSubmit">submit</button>
+          </div>
         </form>
       </div>
     </div>

@@ -16,13 +16,15 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="submit(form)" #form="ngForm">
-          <input type="text" name="drFirstName" placeholder="First Name" class="form-control">
-          <input type="text" name="drLastName" placeholder="Last Name" class="form-control">
-          <input type="email" name="drEmail" placeholder="Email" class="form-control">
-          <input type="password" name="drPassword" placeholder="Password" class="form-control">
+          <input type="text" ngModel name="drFirstName" placeholder="First Name" class="form-control">
+          <input type="text" ngModel name="drLastName" placeholder="Last Name" class="form-control">
+          <input type="email" ngModel name="drEmail" placeholder="Email" class="form-control">
+          <input type="password" ngModel name="drPassword" placeholder="Password" class="form-control">
           <input type="password" name="drConfirmPassword" placeholder="confirm password" class="form-control">
-          <input type="text" name="jobId" placeholder="Job ID" class="form-control">
-          <button type="submit" class="btn btn-primary">submit</button>
+          <input type="text" ngModel name="jobId" placeholder="Job ID" class="form-control">
+          <div id="drSignUpSubmit">
+            <button type="submit" class="btn btn-primary">submit</button>
+          </div>
         </form>
       </div>
     </div>

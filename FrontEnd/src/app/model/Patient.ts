@@ -1,3 +1,6 @@
 export class Patient {
-  name: string;
+  patientFirstName: string;
+  patientLastName: string;
+  patientEmail: string;
+  patientPassword: string;
 }

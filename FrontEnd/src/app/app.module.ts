@@ -12,8 +12,10 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {AuthGuardService} from '../services/auth-guard.service';
 import {SignUpService} from '../services/sign-up.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const route: Routes = [
+  {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
   {path: '**', component: NotFoundComponent},
 ];
@@ -31,11 +33,12 @@ const route: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(route),
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [
     AuthGuardService,
-    SignUpService
+    SignUpService,
   ],
   bootstrap: [AppComponent]
 })

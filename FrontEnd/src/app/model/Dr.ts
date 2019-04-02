@@ -1,3 +1,7 @@
 export class Dr {
-  name: string;
+  drFirstName: string;
+  drLastName: string;
+  drEmail: string;
+  drPassword: string;
+  jobId: string;
 }

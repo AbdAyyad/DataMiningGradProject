@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {SignUpService} from '../../../services/sign-up.service';
 
 @Component({
   selector: 'app-patient-sign-up',
@@ -8,12 +9,14 @@ import {NgForm} from '@angular/forms';
 })
 export class PatientSignUpComponent implements OnInit {
 
-  constructor() {
+  constructor(private signUp: SignUpService) {
   }
 
   ngOnInit() {
   }
 
   submit(form: NgForm) {
+    console.log(form.value);
+    this.signUp.signUpPatient(form.value);
   }
 }
