@@ -7,16 +7,24 @@ from django.db import models
 
 
 class Dr(AbstractBaseUser):
-    email = models.EmailField(unique=True)
-    first_name = models.TextField(max_length=25)
-    last_name = models.TextField(max_length=25)
-    job_id = models.TextField(max_length=10, unique=True)
+    drEmail = models.EmailField(unique=True)
+    drFirstName = models.TextField(max_length=25)
+    drLastName = models.TextField(max_length=25)
+    jobId = models.TextField(max_length=10, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.set_password(raw_password=self.password)
+        super().save(*args, **kwargs)
 
 
 class Parent(AbstractBaseUser):
-    email = models.EmailField(unique=True)
-    first_name = models.TextField(max_length=25)
-    last_name = models.TextField(max_length=25)
+    patientEmail = models.EmailField(unique=True)
+    patientFirstName = models.TextField(max_length=25)
+    patientLastName = models.TextField(max_length=25)
+
+    def save(self, *args, **kwargs):
+        self.set_password(raw_password=self.password)
+        super().save(*args, **kwargs)
 
 
 class Question(models.Model):

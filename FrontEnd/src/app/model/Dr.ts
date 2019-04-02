@@ -2,6 +2,6 @@ export class Dr {
   drFirstName: string;
   drLastName: string;
   drEmail: string;
-  drPassword: string;
+  password: string;
   jobId: string;
 }
