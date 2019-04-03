@@ -1,5 +1,8 @@
-from . import models
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import viewsets
+
+from . import models
 from . import serializers
 
 
@@ -36,3 +39,8 @@ class TestViewSet(viewsets.ModelViewSet):
 class AnswerViewSet(viewsets.ModelViewSet):
     queryset = models.Answer.objects.all()
     serializer_class = serializers.AnswerSerializer
+
+
+class TakeExam(APIView):
+    def get(self, request, format=None):
+        return Response({'status': 'api working'})
