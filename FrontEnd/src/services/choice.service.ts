@@ -27,4 +27,9 @@ export class ChoiceService {
     return this.httpClient.get<Choice>(url);
   }
 
+  deleteChoice(id: number): Observable<Choice> {
+    const url = '';
+    return this.httpClient.delete<Choice>(url);
+  }
+
 }

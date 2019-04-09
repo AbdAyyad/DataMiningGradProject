@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Question} from '../app/model/Question';
 import {Observable} from 'rxjs';
+import {Quiz} from '../app/model/Quiz';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +11,23 @@ export class QuizService {
   constructor(private httpClient: HttpClient) {
   }
 
-  postQuestion(question: Question): Observable<Question> {
+  postQuiz(quiz: Quiz): Observable<Quiz> {
     const url = '';
-    return this.httpClient.post<Question>(url, question);
+    return this.httpClient.post<Quiz>(url, quiz);
   }
 
-  putQuestion(id: number, question: Question): Observable<Question> {
+  putQuiz(id: number, quiz: Quiz): Observable<Quiz> {
     const url = '';
-    return this.httpClient.put<Question>(url, question);
+    return this.httpClient.put<Quiz>(url, quiz);
   }
 
-  getQuestion(id: number): Observable<Question> {
+  getQuiz(id: number): Observable<Quiz> {
     const url = '';
-    return this.httpClient.get<Question>(url);
+    return this.httpClient.get<Quiz>(url);
+  }
+
+  deleteQuiz(id: number): Observable<Quiz> {
+    const url = '';
+    return this.httpClient.delete<Quiz>(url);
   }
 }

@@ -26,4 +26,9 @@ export class QuestionService {
     return this.httpClient.get<Quiz>(url);
   }
 
+  deleteQuestion(id: number): Observable<Quiz> {
+    const url = '';
+    return this.httpClient.delete<Quiz>(url);
+  }
+
 }
