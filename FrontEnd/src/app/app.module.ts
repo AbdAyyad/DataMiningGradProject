@@ -13,6 +13,8 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {AuthGuardService} from '../services/auth-guard.service';
 import {SignUpService} from '../services/sign-up.service';
 import {HttpClientModule} from '@angular/common/http';
+import {QuestionService} from '../services/question.service';
+import {ChoiceService} from '../services/choice.service';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -39,6 +41,8 @@ const route: Routes = [
   providers: [
     AuthGuardService,
     SignUpService,
+    QuestionService,
+    ChoiceService
   ],
   bootstrap: [AppComponent]
 })
