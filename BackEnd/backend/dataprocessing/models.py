@@ -44,11 +44,11 @@ class Choice(models.Model):
 class Quiz(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.TextField(max_length=30)
-    dr = models.ForeignKey('Dr', on_delete=models.CASCADE)
+    dr = models.IntegerField()
 
 
 class Test(models.Model):
-    parent = models.ForeignKey('Parent', on_delete=models.CASCADE)
+    parent = models.IntegerField()
     patient_first_name = models.TextField(max_length=300)
     patient_last_name = models.TextField(max_length=300)
     patient_sex = models.IntegerField()

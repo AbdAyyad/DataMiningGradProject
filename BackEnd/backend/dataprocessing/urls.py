@@ -15,7 +15,7 @@ router.register(r'answer', views.AnswerViewSet)
 
 urlpatterns = [
     re_path(r'', include(router.urls)),
-    re_path(r'^newexam/$', views.TakeExam.as_view()),
+    # re_path(r'^newexam/$', views.TakeExam.as_view()),
     re_path(r'^drlogin/$', views.DrLoginView.as_view()),
     re_path(r'^parentlogin/$', views.ParentLoginView.as_view()),
 ]

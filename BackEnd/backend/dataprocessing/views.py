@@ -59,7 +59,3 @@ class ParentLoginView(APIView):
         return Response({'status': result})
 
 
-class TakeExam(APIView):
-    def get(self, request, format=None):
-        return Response({'status': 'api working'})
-  
