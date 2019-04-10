@@ -11,6 +11,7 @@ export class ParentAuthService {
   private isLoggedIn: boolean;
 
   constructor(private httpClient: HttpClient) {
+    this.isLoggedIn = false;
   }
 
   isAuthenticated() {

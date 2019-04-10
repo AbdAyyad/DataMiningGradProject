@@ -11,7 +11,7 @@ export class DrAuthService {
   private isLoggedIn: boolean;
 
   constructor(private httpClient: HttpClient) {
-    this.isLoggedIn = true;
+    this.isLoggedIn = false;
   }
 
   isAuthenticated() {
