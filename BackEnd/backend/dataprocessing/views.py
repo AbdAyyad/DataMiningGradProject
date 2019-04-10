@@ -11,7 +11,7 @@ class DrViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.DrSerializer
 
 
-class PatientViewSet(viewsets.ModelViewSet):
+class ParentViewSet(viewsets.ModelViewSet):
     queryset = models.Parent.objects.all()
     serializer_class = serializers.ParentSerializer
 
@@ -41,6 +41,25 @@ class AnswerViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AnswerSerializer
 
 
+class DrLoginView(APIView):
+    def post(self, request, format=None):
+        email = request.data['email']
+        password = request.data['password']
+        dr = models.Dr.objects.filter(drEmail=email).first()
+        result = dr.check_password(password)
+        return Response({'status': result})
+
+
+class ParentLoginView(APIView):
+    def post(self, request, format=None):
+        email = request.data['email']
+        password = request.data['password']
+        parent = models.Parent.objects.filter(parentEmail=email).first()
+        result = parent.check_password(password)
+        return Response({'status': result})
+
+
 class TakeExam(APIView):
     def get(self, request, format=None):
         return Response({'status': 'api working'})
+   
