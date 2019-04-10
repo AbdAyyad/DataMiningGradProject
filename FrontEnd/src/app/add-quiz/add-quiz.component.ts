@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-add-quiz',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddQuizComponent implements OnInit {
 
-  constructor() { }
+  private data: [number] = [0];
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  addQuestion() {
+    this.data.push(1);
+  }
+
+  submit(form: NgForm) {
+    console.log(form);
   }
 
 }
