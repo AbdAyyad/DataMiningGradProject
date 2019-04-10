@@ -10,18 +10,20 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {SignInComponent} from './sign-in/sign-in.component';
-import {DrAuthService} from '../services/dr-auth.service';
+import {DrGuardService} from '../services/dr-guard.service';
 import {SignUpService} from '../services/sign-up.service';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionService} from '../services/question.service';
 import {ChoiceService} from '../services/choice.service';
-import {ParentAuthService} from '../services/parent-auth.service';
+import {ParentGuardService} from '../services/parent-guard.service';
 import {AddQuizComponent} from './add-quiz/add-quiz.component';
+import {TakeExamComponent} from './take-exam/take-exam.component';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
-  {path: 'dr', component: AddQuizComponent},
+  {path: 'dr', component: AddQuizComponent, canActivate: [DrGuardService]},
+  {path: 'parent', component: AddQuizComponent, canActivate: [ParentGuardService]},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -34,7 +36,8 @@ const route: Routes = [
     NotFoundComponent,
     WelcomeComponent,
     SignInComponent,
-    AddQuizComponent
+    AddQuizComponent,
+    TakeExamComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +46,8 @@ const route: Routes = [
     HttpClientModule,
   ],
   providers: [
-    DrAuthService,
-    ParentAuthService,
+    DrGuardService,
+    ParentGuardService,
     SignUpService,
     QuestionService,
     ChoiceService

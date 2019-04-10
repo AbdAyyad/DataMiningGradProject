@@ -1,16 +1,34 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {LoginModel} from '../app/model/LoginModel';
 import {Observable} from 'rxjs';
+import {LoginReply} from '../app/model/LoginReply';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DrAuthService implements CanActivate {
+export class DrAuthService {
+  private isLoggedIn: boolean;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
+    this.isLoggedIn = true;
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return undefined;
+  isAuthenticated() {
+    return new Promise(
+      (resolve, reject) => {
+        resolve(this.isLoggedIn);
+        reject(false);
+      }
+    );
+  }
+
+  logIn(loginModel: LoginModel): Observable<LoginReply> {
+    const url = '';
+    return this.httpClient.post<LoginReply>(url, loginModel);
+  }
+
+  LogOut() {
+    this.isLoggedIn = false;
   }
 }
