@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DrAuthService} from '../../services/dr-auth.service';
+import {DrAuthService} from '../../services/web/dr-auth.service';
 import {LoginModel} from '../model/LoginModel';
-import {ParentAuthService} from '../../services/parent-auth.service';
+import {ParentAuthService} from '../../services/web/parent-auth.service';
 import {Router} from '@angular/router';
 
 @Component({

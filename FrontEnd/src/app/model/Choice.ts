@@ -1,5 +1,5 @@
 export class Choice {
-  questionId: number;
+  question: number;
   text: string;
   score: number;
 }

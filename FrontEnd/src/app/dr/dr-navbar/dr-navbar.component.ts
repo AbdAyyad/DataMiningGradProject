@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DrAuthService} from '../../../services/dr-auth.service';
+import {DrAuthService} from '../../../services/web/dr-auth.service';
 
 @Component({
   selector: 'app-dr-navbar',

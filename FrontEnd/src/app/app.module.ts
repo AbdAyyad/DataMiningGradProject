@@ -10,18 +10,30 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {FormsModule} from '@angular/forms';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {SignInComponent} from './sign-in/sign-in.component';
-import {DrGuardService} from '../services/dr-guard.service';
-import {SignUpService} from '../services/sign-up.service';
+import {DrGuardService} from '../services/web/dr-guard.service';
+import {SignUpService} from '../services/web/sign-up.service';
 import {HttpClientModule} from '@angular/common/http';
-import {QuestionService} from '../services/question.service';
-import {ChoiceService} from '../services/choice.service';
-import {ParentGuardService} from '../services/parent-guard.service';
+import {QuestionService} from '../services/web/question.service';
+import {ChoiceService} from '../services/web/choice.service';
+import {ParentGuardService} from '../services/web/parent-guard.service';
 import {AddQuizComponent} from './dr/add-quiz/add-quiz.component';
-import {ParentComponent} from './parent/parent.component';
+import {AllQuizComponent} from './all-quiz/all-quiz.component';
 import {SignUpCompleteComponent} from './signUpCompenents/sign-up-complete/sign-up-complete.component';
 import {DrNavbarComponent} from './dr/dr-navbar/dr-navbar.component';
 import {ResultsComponent} from './dr/results/results.component';
 import {CookieService} from 'angular2-cookie/core';
+import {SubmitComponent} from './dr/submit/submit.component';
+import {AnswersComponent} from './dr/answers/answers.component';
+import {ShowResultService} from '../services/component/show-result.service';
+import {DrAuthService} from '../services/web/dr-auth.service';
+import {ParentAuthService} from '../services/web/parent-auth.service';
+import {QuizService} from '../services/web/quiz.service';
+import {ResultService} from '../services/web/result.service';
+import {ParentNavbarComponent} from './parent/parent-navbar/parent-navbar.component';
+import {DrAllQuizComponent} from './dr/dr-all-quiz/dr-all-quiz.component';
+import {ParentAllQuizComponent} from './parent/parent-all-quiz/parent-all-quiz.component';
+import {SingleQuizComponent} from './single-quiz/single-quiz.component';
+import {ShowQuizService} from '../services/component/show-quiz.service';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -29,7 +41,10 @@ const route: Routes = [
   {path: 'sign-complete', component: SignUpCompleteComponent},
   {path: 'dr/new', component: AddQuizComponent, canActivate: [DrGuardService]},
   {path: 'dr/result', component: ResultsComponent, canActivate: [DrGuardService]},
-  {path: 'parent', component: AddQuizComponent, canActivate: [ParentGuardService]},
+  {path: 'dr/submit', component: SubmitComponent, canActivate: [DrGuardService]},
+  {path: 'dr/answer', component: AnswersComponent, canActivate: [DrGuardService]},
+  {path: 'parent', component: ParentAllQuizComponent, canActivate: [ParentGuardService]},
+  {path: 'quiz', component: SingleQuizComponent, canActivate: [ParentGuardService, DrGuardService]},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -43,10 +58,16 @@ const route: Routes = [
     WelcomeComponent,
     SignInComponent,
     AddQuizComponent,
-    ParentComponent,
+    AllQuizComponent,
     SignUpCompleteComponent,
     DrNavbarComponent,
-    ResultsComponent
+    ResultsComponent,
+    SubmitComponent,
+    AnswersComponent,
+    ParentNavbarComponent,
+    DrAllQuizComponent,
+    ParentAllQuizComponent,
+    SingleQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -56,11 +77,17 @@ const route: Routes = [
   ],
   providers: [
     DrGuardService,
+    DrAuthService,
     ParentGuardService,
+    ParentAuthService,
     SignUpService,
     QuestionService,
     ChoiceService,
-    CookieService
+    CookieService,
+    ShowResultService,
+    QuizService,
+    ResultService,
+    ShowQuizService
   ],
   bootstrap: [AppComponent]
 })

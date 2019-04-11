@@ -1,0 +1,15 @@
+<app-dr-navbar></app-dr-navbar>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>question</th>
+    <th>answer</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of data;let i = index;">
+      <td>{{item.question}}</td>
+      <td>{{item.choice}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

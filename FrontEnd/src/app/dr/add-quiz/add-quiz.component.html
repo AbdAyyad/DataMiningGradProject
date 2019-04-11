@@ -6,39 +6,39 @@
       <div>
         <div class="row">
           <div class="col-12">
-            <textarea class="form-control" rows="5" placeholder="Question Body"></textarea>
+            <textarea name="question{{i}}" ngModel class="form-control" rows="5" placeholder="Question Body"></textarea>
           </div>
         </div>
         <div class="row">
           <div class="col-10">
-            <input type="text" class="form-control" placeholder="Choice A Body">
+            <input type="text" name="choice1-{{i}}" ngModel class="form-control" placeholder="Choice A Body">
           </div>
           <div class="col-2">
-            <input type="text" class="form-control" placeholder="Choice A Score">
+            <input type="text" name="score1-{{i}}" ngModel class="form-control" placeholder="Choice A Score">
           </div>
         </div>
         <div class="row">
           <div class="col-10">
-            <input type="text" class="form-control" placeholder="Choice B Body">
+            <input type="text" name="choice2-{{i}}" ngModel class="form-control" placeholder="Choice B Body">
           </div>
           <div class="col-2">
-            <input type="text" class="form-control" placeholder="Choice B Score">
+            <input type="text" name="score2-{{i}}" ngModel class="form-control" placeholder="Choice B Score">
           </div>
         </div>
         <div class="row">
           <div class="col-10">
-            <input type="text" class="form-control" placeholder="Choice C Body">
+            <input type="text" name="choice3-{{i}}" ngModel class="form-control" placeholder="Choice C Body">
           </div>
           <div class="col-2">
-            <input type="text" class="form-control" placeholder="Choice C Score">
+            <input type="text" name="score3-{{i}}" ngModel class="form-control" placeholder="Choice C Score">
           </div>
         </div>
         <div class="row">
           <div class="col-10">
-            <input type="text" class="form-control" placeholder="Choice D Body">
+            <input type="text" name="choice4-{{i}}" ngModel class="form-control" placeholder="Choice D Body">
           </div>
           <div class="col-2">
-            <input type="text" class="form-control" placeholder="Choice D Score">
+            <input type="text" name="score4-{{i}}" ngModel class="form-control" placeholder="Choice D Score">
           </div>
         </div>
       </div>

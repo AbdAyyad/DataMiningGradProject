@@ -1,4 +1,4 @@
 export class Quiz {
-  titel: string;
-  drId: number;
+  title: string;
+  dr: number;
 }

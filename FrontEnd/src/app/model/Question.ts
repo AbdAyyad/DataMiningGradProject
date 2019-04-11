@@ -1,5 +1,4 @@
 export class Question {
-  questionBody: string;
-  correctAnswer: number;
-  quizId: string;
+  question_body: string;
+  quiz: number;
 }
