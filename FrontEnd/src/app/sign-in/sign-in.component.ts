@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {DrAuthService} from '../../services/dr-auth.service';
+import {LoginModel} from '../model/LoginModel';
+import {ParentAuthService} from '../../services/parent-auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,12 +11,51 @@ import {NgForm} from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() {
+  constructor(private drAuthService: DrAuthService,
+              private parentAuthService: ParentAuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  submit(form: NgForm) {
+  drSignIn(email: string, password: string, button: HTMLButtonElement) {
+    const loginModel: LoginModel = {
+      email,
+      password
+    };
+
+    this.drAuthService.logIn(loginModel);
+    setTimeout(() => {
+      this.drAuthService.isAuthenticated().then(
+        (result) => {
+          if (!result) {
+            console.log('not logged in');
+          } else {
+            button.click();
+          }
+        }
+      );
+    }, 1000);
+  }
+
+  parentSignIn(email: string, password: string, button: HTMLButtonElement) {
+    const loginModel: LoginModel = {
+      email,
+      password
+    };
+
+    this.parentAuthService.logIn(loginModel);
+    setTimeout(() => {
+      this.parentAuthService.isAuthenticated().then(
+        (result) => {
+          if (!result) {
+            console.log('not logged in');
+          } else {
+            button.click();
+          }
+        }
+      );
+    }, 1000);
   }
 }

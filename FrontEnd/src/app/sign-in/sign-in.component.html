@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#signInModal">
-  signIn
+  Sign In
 </button>
 
 <!-- Modal -->
@@ -10,18 +10,23 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="signInLabel">Sign in</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" #close data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="submit(form)" #form="ngForm">
-          <input type="email"  name="Email" placeholder="Email" class="form-control">
-          <input type="password" name="Password" placeholder="Password" class="form-control">
-          <div id="sigIn">
-            <button type="submit" class="btn btn-primary">sign in</button>
-          </div>
-        </form>
+        <input type="email" #email name="email" placeholder="Email" class="form-control">
+        <input type="password" #password name="password" placeholder="Password" class="form-control">
+        <div class="row">
+          <button type="button" class="btn btn-primary"
+                  (click)="parentSignIn(email.value.trim(),password.value.trim(),close)"
+                  id="parentSignInButton">Sign In as Parent
+          </button>
+          <button type="button" class="btn btn-primary"
+                  (click)="drSignIn(email.value.trim(),password.value.trim(),close)"
+                  id="drSignInButton">Sign In as Dr
+          </button>
+        </div>
       </div>
     </div>
   </div>

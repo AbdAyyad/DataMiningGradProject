@@ -2,6 +2,10 @@ input{
   margin-bottom: 10px;
 }
 
-#sigIn{
-  margin-left: 84%;
+#parentSignInButton{
+  margin-left: 15px;
+}
+
+#drSignInButton{
+  margin-left: 42%;
 }
