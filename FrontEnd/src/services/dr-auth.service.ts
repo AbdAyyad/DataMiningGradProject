@@ -32,7 +32,7 @@ export class DrAuthService {
     this.httpClient.post<LoginReply>(url, loginModel).subscribe(result => {
       this.loginReply = result;
       if (this.loginReply.status) {
-        this.router.navigate(['/dr']);
+        this.router.navigate(['/dr/new']);
       }
     });
   }

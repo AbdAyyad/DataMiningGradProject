@@ -30,7 +30,6 @@ class Parent(AbstractBaseUser):
 class Question(models.Model):
     id = models.AutoField(primary_key=True)
     question_body = models.TextField(max_length=300)
-    correct_answer = models.IntegerField()
     quiz = models.ForeignKey('Quiz', on_delete=models.CASCADE)
 
 
@@ -48,7 +47,8 @@ class Quiz(models.Model):
 
 
 class Test(models.Model):
-    parent = models.IntegerField()
+    account = models.IntegerField()
+    account_type = models.IntegerField()
     patient_first_name = models.TextField(max_length=300)
     patient_last_name = models.TextField(max_length=300)
     patient_sex = models.IntegerField()

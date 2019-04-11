@@ -16,15 +16,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {QuestionService} from '../services/question.service';
 import {ChoiceService} from '../services/choice.service';
 import {ParentGuardService} from '../services/parent-guard.service';
-import {AddQuizComponent} from './add-quiz/add-quiz.component';
-import {TakeExamComponent} from './take-exam/take-exam.component';
-import { SignUpCompleteComponent } from './signUpCompenents/sign-up-complete/sign-up-complete.component';
+import {AddQuizComponent} from './dr/add-quiz/add-quiz.component';
+import {ParentComponent} from './parent/parent.component';
+import {SignUpCompleteComponent} from './signUpCompenents/sign-up-complete/sign-up-complete.component';
+import {DrNavbarComponent} from './dr/dr-navbar/dr-navbar.component';
+import {ResultsComponent} from './dr/results/results.component';
+import {CookieService} from 'angular2-cookie/core';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'sign-complete', component: SignUpCompleteComponent},
-  {path: 'dr', component: AddQuizComponent, canActivate: [DrGuardService]},
+  {path: 'dr/new', component: AddQuizComponent, canActivate: [DrGuardService]},
+  {path: 'dr/result', component: ResultsComponent, canActivate: [DrGuardService]},
   {path: 'parent', component: AddQuizComponent, canActivate: [ParentGuardService]},
   {path: '**', component: NotFoundComponent},
 ];
@@ -39,8 +43,10 @@ const route: Routes = [
     WelcomeComponent,
     SignInComponent,
     AddQuizComponent,
-    TakeExamComponent,
-    SignUpCompleteComponent
+    ParentComponent,
+    SignUpCompleteComponent,
+    DrNavbarComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,8 @@ const route: Routes = [
     ParentGuardService,
     SignUpService,
     QuestionService,
-    ChoiceService
+    ChoiceService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
