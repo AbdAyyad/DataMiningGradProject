@@ -14,13 +14,30 @@ export class DrAuthService {
     this.loginReply = {
       email: '',
       id: -1,
-      status: false
+      status: false,
+      name: ''
+    };
+  }
+
+  getLoginReply(): LoginReply {
+    return {
+      email: this.loginReply.email,
+      id: this.loginReply.id,
+      status: this.loginReply.status,
+      name: this.loginReply.name
     };
   }
 
   isAuthenticated() {
     return new Promise(
       (resolve, reject) => {
+        // ******************************************8
+        // ******************************************8
+        // ******************************************8
+        // ******************************************8
+        // ******************************************8
+        // ******************************************8
+        // ******************************************8
         resolve(this.loginReply.status);
         reject(false);
       }
@@ -41,7 +58,8 @@ export class DrAuthService {
     this.loginReply = {
       email: '',
       id: -1,
-      status: false
+      status: false,
+      name: ''
     };
   }
 }

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoginModel} from '../app/model/LoginModel';
-import {Observable} from 'rxjs';
 import {LoginReply} from '../app/model/LoginReply';
 import {Router} from '@angular/router';
 
@@ -15,7 +14,8 @@ export class ParentAuthService {
     this.loginReply = {
       email: '',
       id: -1,
-      status: false
+      status: false,
+      name: ''
     };
   }
 
@@ -43,7 +43,8 @@ export class ParentAuthService {
     this.loginReply = {
       email: '',
       id: -1,
-      status: false
+      status: false,
+      name: ''
     };
   }
 }

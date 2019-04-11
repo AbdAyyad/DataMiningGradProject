@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {DrAuthService} from '../../../services/dr-auth.service';
 
 @Component({
   selector: 'app-dr-navbar',
@@ -8,11 +9,11 @@ import {Component, OnInit} from '@angular/core';
 export class DrNavbarComponent implements OnInit {
   drName: string;
 
-  constructor() {
+  constructor(private drAuthService: DrAuthService) {
   }
 
   ngOnInit() {
-    this.drName = 'ahmad';
+    this.drName = this.drAuthService.getLoginReply().name;
   }
 
   signOut() {

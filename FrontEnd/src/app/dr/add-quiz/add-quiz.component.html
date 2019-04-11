@@ -1,10 +1,50 @@
 <app-dr-navbar></app-dr-navbar>
-<form (ngSubmit)="submit(form)" #form="ngForm">
-  <input type="text" ngModel name="title" placeholder="quiz title">
-  <div *ngFor="let item of data; let i = index">
-    <input type="text" ngModel="i">
-  </div>
-  <button type="button" (click)="addQuestion()" class="btn btn-success">add question</button>
-
-  <button type="submit" class="btn btn-primary">submit</button>
-</form>
+<div class="container">
+  <form (ngSubmit)="submit(form)" #form="ngForm">
+    <input type="text" class="form-control" ngModel name="title" placeholder="quiz title" id="quizTitle">
+    <div *ngFor="let item of data; let i = index">
+      <div>
+        <div class="row">
+          <div class="col-12">
+            <textarea class="form-control" rows="5" placeholder="Question Body"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <input type="text" class="form-control" placeholder="Choice A Body">
+          </div>
+          <div class="col-2">
+            <input type="text" class="form-control" placeholder="Choice A Score">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <input type="text" class="form-control" placeholder="Choice B Body">
+          </div>
+          <div class="col-2">
+            <input type="text" class="form-control" placeholder="Choice B Score">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <input type="text" class="form-control" placeholder="Choice C Body">
+          </div>
+          <div class="col-2">
+            <input type="text" class="form-control" placeholder="Choice C Score">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+            <input type="text" class="form-control" placeholder="Choice D Body">
+          </div>
+          <div class="col-2">
+            <input type="text" class="form-control" placeholder="Choice D Score">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" id="addQuestionButton" (click)="addQuestion()" class="btn btn-success">add question</button>
+    <br/>
+    <button type="submit" class="btn btn-primary">submit</button>
+  </form>
+</div>
