@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Dr} from '../app/model/Dr';
 import {Observable} from 'rxjs';
-import {Patient} from '../app/model/Patient';
+import {Parent} from '../app/model/Parent';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class SignUpService {
   }
 
   signUpDr(dr: Dr): Observable<Dr> {
-    const url = '  ';
+    const url = 'http://127.0.0.1:8000/api/dr/';
     return this.http.post<Dr>(url, dr);
   }
 
-  signUpPatient(patient: Patient): Observable<Patient> {
-    const url = '  ';
-    return this.http.post<Patient>(url, patient);
+  signUpPatient(parent: Parent): Observable<Parent> {
+    const url = 'http://127.0.0.1:8000/api/parent/';
+    return this.http.post<Parent>(url, parent);
   }
 }

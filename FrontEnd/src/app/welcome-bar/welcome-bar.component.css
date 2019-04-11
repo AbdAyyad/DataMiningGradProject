@@ -1,10 +1,10 @@
 .vertical-line {
-  /*background-color: #808080;*/
-  /*width: 1px;*/
-  /*height: 100%;*/
-  /*float: left;*/
   margin-right: 5px;
   margin-left: 5px;
   border-left: 2px solid #808080;
   height: 40px;
+}
+
+#drSignUp{
+  margin-right: 5px;
 }

@@ -1,4 +1,4 @@
-export class Patient {
+export class Parent {
   patientFirstName: string;
   patientLastName: string;
   patientEmail: string;

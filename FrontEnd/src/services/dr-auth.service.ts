@@ -1,34 +1,43 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {LoginModel} from '../app/model/LoginModel';
-import {Observable} from 'rxjs';
 import {LoginReply} from '../app/model/LoginReply';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrAuthService {
-  private isLoggedIn: boolean;
+  private loginReply: LoginReply;
 
   constructor(private httpClient: HttpClient) {
-    this.isLoggedIn = false;
+    this.loginReply = {
+      email: '',
+      id: -1,
+      status: false
+    };
   }
 
   isAuthenticated() {
     return new Promise(
       (resolve, reject) => {
-        resolve(this.isLoggedIn);
+        resolve(this.loginReply.status);
         reject(false);
       }
     );
   }
 
-  logIn(loginModel: LoginModel): Observable<LoginReply> {
+  logIn(loginModel: LoginModel) {
     const url = '';
-    return this.httpClient.post<LoginReply>(url, loginModel);
+    this.httpClient.post<LoginReply>(url, loginModel).subscribe(result => {
+      this.loginReply = result;
+    });
   }
 
   LogOut() {
-    this.isLoggedIn = false;
+    this.loginReply = {
+      email: '',
+      id: -1,
+      status: false
+    };
   }
 }

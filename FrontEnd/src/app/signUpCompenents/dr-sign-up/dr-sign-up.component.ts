@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {SignUpService} from '../../../services/sign-up.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dr-sign-up',
@@ -9,14 +10,15 @@ import {SignUpService} from '../../../services/sign-up.service';
 })
 export class DrSignUpComponent implements OnInit {
 
-  constructor(private signUpService: SignUpService) {
+  constructor(private signUpService: SignUpService, private router: Router) {
   }
 
   ngOnInit() {
   }
 
   submit(form: NgForm): void {
-    console.log(form.value);
-    this.signUpService.signUpDr(form.value);
+    this.signUpService.signUpDr(form.value).subscribe(result => {
+      this.router.navigate(['sign-complete']);
+    });
   }
 }
