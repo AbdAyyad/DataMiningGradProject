@@ -15,6 +15,10 @@ export class DrNavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getDrName();
+  }
+
+  getDrName() {
     this.drName = this.drAuthService.getLoginReply().name;
   }
 

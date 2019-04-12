@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,10 +6,12 @@ import { Injectable } from '@angular/core';
 export class ShowQuizService {
   private quizId: number;
   private accountType: number;
+  private accountId: number;
 
   constructor() {
     this.quizId = -1;
     this.accountType = -1;
+    this.accountId = -1;
   }
 
   setQuizId(id: number) {
@@ -26,5 +28,13 @@ export class ShowQuizService {
 
   getAccountType(): number {
     return this.accountType;
+  }
+
+  setAccountId(id: number) {
+    this.accountId = id;
+  }
+
+  getAccountId(): number {
+    return this.accountId;
   }
 }

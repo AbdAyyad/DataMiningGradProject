@@ -7,6 +7,8 @@ import {DrAuthService} from '../../services/web/dr-auth.service';
 import {QuestionService} from '../../services/web/question.service';
 import {ShowQuestionService} from '../../services/component/show-question.service';
 import {NgForm} from '@angular/forms';
+import {ShowResultService} from '../../services/component/show-result.service';
+import {ParentAuthService} from '../../services/web/parent-auth.service';
 
 @Component({
   selector: 'app-all-quiz',
@@ -22,7 +24,9 @@ export class AllQuizComponent implements OnInit {
               private drAuthService: DrAuthService,
               private showQuestionService: ShowQuestionService,
               private questionService: QuestionService,
-              private router: Router) {
+              private router: Router,
+              private showResultService: ShowResultService,
+              private parentAuthService: ParentAuthService) {
   }
 
   ngOnInit() {
@@ -39,7 +43,9 @@ export class AllQuizComponent implements OnInit {
     this.showQuizService.setQuizId(quizId);
     if (this.drAuthService.getLoginReply().status) {
       this.showQuizService.setAccountType(1);
+      this.showQuizService.setQuizId(this.drAuthService.getLoginReply().id);
     } else {
+      this.showQuizService.setAccountId(this.parentAuthService.getLoginReply().id);
       this.showQuizService.setAccountType(2);
     }
     this.questionService.getQuestionByQuizId(quizId).subscribe(
@@ -48,7 +54,7 @@ export class AllQuizComponent implements OnInit {
         if (this.showQuizService.getAccountType() === 1) {
           this.router.navigate(['/dr/take']);
         } else {
-          this.router.navigate(['/parent/quiz']);
+          this.router.navigate(['/parent/take']);
         }
       }
     );
@@ -56,6 +62,15 @@ export class AllQuizComponent implements OnInit {
 
   submitTheForm(form: NgForm) {
     this.formMode = false;
-    console.log('inside the submit');
+    let sex;
+    if (form.value.opt === 'male') {
+      sex = 1;
+    } else {
+      sex = 2;
+    }
+    this.showResultService.patentSex = sex;
+    this.showResultService.patentFirstName = form.value.patient_first_name;
+    this.showResultService.patentLastName = form.value.patient_last_name;
+    this.showResultService.patentBirthDate = form.value.patient_birth_date;
   }
 }

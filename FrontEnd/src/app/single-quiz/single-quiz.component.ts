@@ -8,6 +8,7 @@ import {ResultService} from '../../services/web/result.service';
 import {AnswerService} from '../../services/web/answer.service';
 import {Result} from '../../model/Result';
 import {ShowQuizService} from '../../services/component/show-quiz.service';
+import {ShowResultService} from '../../services/component/show-result.service';
 
 @Component({
   selector: 'app-single-quiz',
@@ -21,12 +22,14 @@ export class SingleQuizComponent implements OnInit {
   private answers: Answer[];
   private totalScore: number[];
   private submitFlag: boolean;
+  private seeResult: boolean;
 
   constructor(private choiceService: ChoiceService,
               private showQuestionService: ShowQuestionService,
               private resultService: ResultService,
               private answerService: AnswerService,
-              private showQuizService: ShowQuizService) {
+              private showQuizService: ShowQuizService,
+              private showResultService: ShowResultService) {
   }
 
   ngOnInit() {
@@ -38,9 +41,11 @@ export class SingleQuizComponent implements OnInit {
     }
     this.showQuestionService.nextIdx();
     this.updateUi();
+    this.seeResult = false;
   }
 
   updateUi() {
+    this.seeResult = false;
     this.questionIdx = this.showQuestionService.getIdx();
     this.submitFlag = this.questionIdx === this.showQuestionService.getLength() - 1;
     this.question = this.showQuestionService.getQuestion(this.questionIdx);
@@ -77,18 +82,19 @@ export class SingleQuizComponent implements OnInit {
       console.log(score);
       total += score;
     });
-
+    this.seeResult = true;
+    const date = new Date();
     const result: Result = {
       quiz: this.showQuizService.getQuizId(),
       result: total,
-      patient_first_name: 'a',
-      account: 0,
+      patient_first_name: this.showResultService.patentFirstName,
+      account: this.showQuizService.getAccountId(),
       id: -1,
-      patient_last_name: 'a',
+      patient_last_name: this.showResultService.patentLastName,
       account_type: this.showQuizService.getAccountType(),
-      patient_birth_date: '2019-1-1',
-      patient_sex: 1,
-      time_stamp: '2019-1-1'
+      patient_birth_date: this.showResultService.patentBirthDate,
+      patient_sex: this.showResultService.patentSex,
+      time_stamp: date.getFullYear() + '-' + date.getMonth() + '-' + date.getDay()
     };
     this.resultService.postResult(result).subscribe(
       reply => {

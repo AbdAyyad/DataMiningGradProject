@@ -15,4 +15,5 @@
   <ng-template #submitArea>
     <button type="button" (click)="submitResult()" class="btn btn-primary nextButton">Submit</button>
   </ng-template>
+  <h3 *ngIf="seeResult">your score is {{total}}</h3>
 </div>

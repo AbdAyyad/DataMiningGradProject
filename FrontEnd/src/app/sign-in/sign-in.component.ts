@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  private error: boolean;
 
   constructor(private drAuthService: DrAuthService,
               private parentAuthService: ParentAuthService,
@@ -17,6 +18,7 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.error = false;
   }
 
   drSignIn(email: string, password: string, button: HTMLButtonElement) {
@@ -30,14 +32,16 @@ export class SignInComponent implements OnInit {
       this.drAuthService.isAuthenticated().then(
         (result) => {
           if (!result) {
-            console.log('not logged in');
+            this.error = true;
           } else {
             button.click();
             this.router.navigate(['/dr/new']);
+            this.error = false;
           }
         }
       );
-    }, 1000);
+    }, 500);
+
   }
 
   parentSignIn(email: string, password: string, button: HTMLButtonElement) {
@@ -47,16 +51,17 @@ export class SignInComponent implements OnInit {
     };
 
     this.parentAuthService.logIn(loginModel);
-    setTimeout(() => {
-      this.parentAuthService.isAuthenticated().then(
-        (result) => {
-          if (!result) {
-            console.log('not logged in');
-          } else {
-            button.click();
-          }
+    this.parentAuthService.isAuthenticated().then(
+      (result) => {
+        if (!result) {
+          this.error = true;
+        } else {
+          this.error = false;
+
+          button.click();
         }
-      );
-    }, 1000);
+      }
+    );
+
   }
 }

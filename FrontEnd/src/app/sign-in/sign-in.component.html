@@ -17,6 +17,7 @@
       <div class="modal-body">
         <input type="email" #email name="email" placeholder="Email" class="form-control">
         <input type="password" #password name="password" placeholder="Password" class="form-control">
+        <h3 *ngIf="error" class="text-danger">error sign in</h3>
         <div class="row">
           <button type="button" class="btn btn-primary"
                   (click)="parentSignIn(email.value.trim(),password.value.trim(),close)"

@@ -36,6 +36,7 @@ import {SingleQuizComponent} from './single-quiz/single-quiz.component';
 import {ShowQuizService} from '../services/component/show-quiz.service';
 import {ShowQuestionService} from '../services/component/show-question.service';
 import { DrTakeQuizComponent } from './dr/dr-take-quiz/dr-take-quiz.component';
+import { ParentTakeQuizComponent } from './parent/parent-take-quiz/parent-take-quiz.component';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -47,7 +48,8 @@ const route: Routes = [
   {path: 'dr/answer', component: AnswersComponent, canActivate: [DrGuardService]},
   {path: 'dr/quiz', component: DrAllQuizComponent, canActivate: [DrGuardService]},
   {path: 'dr/take', component: DrTakeQuizComponent, canActivate: [DrGuardService]},
-  {path: 'parent', component: ParentAllQuizComponent, canActivate: [ParentGuardService]},
+  {path: 'parent/quiz', component: ParentAllQuizComponent, canActivate: [ParentGuardService]},
+  {path: 'parent/take', component: ParentTakeQuizComponent, canActivate: [ParentGuardService]},
   {path: '**', component: NotFoundComponent},
 ];
 
@@ -71,7 +73,8 @@ const route: Routes = [
     DrAllQuizComponent,
     ParentAllQuizComponent,
     SingleQuizComponent,
-    DrTakeQuizComponent
+    DrTakeQuizComponent,
+    ParentTakeQuizComponent
   ],
   imports: [
     BrowserModule,

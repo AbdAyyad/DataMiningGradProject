@@ -47,4 +47,13 @@ export class ParentAuthService {
       name: ''
     };
   }
+
+  getLoginReply(): LoginReply {
+    return {
+      email: this.loginReply.email,
+      id: this.loginReply.id,
+      status: this.loginReply.status,
+      name: this.loginReply.name
+    };
+  }
 }

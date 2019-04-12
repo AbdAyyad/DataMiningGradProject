@@ -38,7 +38,7 @@ export class DrAuthService {
         // ******************************************8
         // ******************************************8
         // ******************************************8
-        resolve(true);
+        resolve(this.loginReply.status);
         reject(false);
       }
     );
@@ -48,9 +48,6 @@ export class DrAuthService {
     const url = 'http://127.0.0.1:8000/api/drlogin/';
     this.httpClient.post<LoginReply>(url, loginModel).subscribe(result => {
       this.loginReply = result;
-      if (this.loginReply.status) {
-        this.router.navigate(['/dr/new']);
-      }
     });
   }
 
