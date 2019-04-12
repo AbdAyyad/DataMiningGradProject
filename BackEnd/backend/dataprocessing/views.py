@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
+from rest_framework import generics
 
 from . import models
 from . import serializers
@@ -31,9 +32,9 @@ class QuizViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.QuizSerializer
 
 
-class TestViewSet(viewsets.ModelViewSet):
-    queryset = models.Test.objects.all()
-    serializer_class = serializers.TestSerializer
+class ResultViewSet(viewsets.ModelViewSet):
+    queryset = models.Result.objects.all()
+    serializer_class = serializers.ResultSerializer
 
 
 class AnswerViewSet(viewsets.ModelViewSet):
@@ -59,3 +60,28 @@ class ParentLoginView(APIView):
         return Response({'status': result})
 
 
+class ResultAnswerView(generics.ListAPIView):
+    serializer_class = serializers.AnswerSerializer
+
+    def get_queryset(self):
+        result_id = self.kwargs['result_id']
+        answers = models.Answer.objects.filter(result=result_id)
+        return answers
+
+
+class QuestionQuizView(generics.ListAPIView):
+    serializer_class = serializers.QuestionSerializer
+
+    def get_queryset(self):
+        quiz_id = self.kwargs['quiz_id']
+        answers = models.Question.objects.filter(quiz=quiz_id)
+        return answers
+
+
+class ChoiceQuestionView(generics.ListAPIView):
+    serializer_class = serializers.ChoiceSerializer
+
+    def get_queryset(self):
+        question_id = self.kwargs['question_id']
+        answers = models.Choice.objects.filter(question=question_id)
+        return answers

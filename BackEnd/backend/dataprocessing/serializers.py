@@ -32,9 +32,9 @@ class QuizSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class TestSerializer(serializers.ModelSerializer):
+class ResultSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Test
+        model = models.Result
         fields = '__all__'
 
 

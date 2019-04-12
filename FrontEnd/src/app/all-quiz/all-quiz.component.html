@@ -1,4 +1,22 @@
-
-<p>
-  take-exam works!
-</p>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>
+      #
+    </th>
+    <th>
+      quiz title
+    </th>
+    <th>
+      dr id
+    </th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of data; let i = index" (click)="takeQuiz(item.id)">
+      <td>{{i + 1}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.dr}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

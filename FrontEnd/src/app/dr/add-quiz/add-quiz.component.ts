@@ -45,7 +45,8 @@ export class AddQuizComponent implements OnInit {
 
     const quiz: Quiz = {
       dr: this.drAuthService.getLoginReply().id,
-      title: form.value.title
+      title: form.value.title,
+      id: -1
     };
 
     this.quizService.postQuiz(quiz).subscribe(quizReply => {
@@ -55,7 +56,8 @@ export class AddQuizComponent implements OnInit {
 
           const question: Question = {
             question_body: form.value[questionKey],
-            quiz: quizReply.id
+            quiz: quizReply.id,
+            id: -1
           };
           this.questionService.postQuestion(question).subscribe(
             questionReply => {
@@ -72,25 +74,29 @@ export class AddQuizComponent implements OnInit {
               const choiceB: Choice = {
                 question: questionReply.id,
                 score: form.value[scoreBKey],
-                text: form.value[choiceBKey]
+                text: form.value[choiceBKey],
+                id: -1
               };
 
               const choiceC: Choice = {
                 question: questionReply.id,
                 score: form.value[scoreCKey],
-                text: form.value[choiceCKey]
+                text: form.value[choiceCKey],
+                id: -1
               };
 
               const choiceD: Choice = {
                 question: questionReply.id,
                 score: form.value[scoreDKey],
-                text: form.value[choiceDKey]
+                text: form.value[choiceDKey],
+                id: -1
               };
 
               const choiceA: Choice = {
                 question: questionReply.id,
                 score: form.value[scoreAKey],
-                text: form.value[choiceAKey]
+                text: form.value[choiceAKey],
+                id: -1
               };
 
               this.choiceService.postChoice(choiceA).subscribe(ignore => {

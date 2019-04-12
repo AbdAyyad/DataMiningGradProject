@@ -18,6 +18,7 @@ export class AnswersComponent implements OnInit {
   ngOnInit() {
     this.answerService.getAnswers(this.showResultService.getResultId()).subscribe(
       result => {
+        console.log(this.showResultService.getResultId());
         this.data = result;
       }
     );

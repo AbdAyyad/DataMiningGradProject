@@ -27,6 +27,11 @@ export class ChoiceService {
     return this.httpClient.get<Choice>(url);
   }
 
+  getChoiceByQuestionId(questionId: number): Observable<[Choice]> {
+    const url = 'http://127.0.0.1:8000/api/choicequestion/' + questionId + '/';
+    return this.httpClient.get<[Choice]>(url);
+  }
+
   deleteChoice(id: number): Observable<Choice> {
     const url = 'http://127.0.0.1:8000/api/choice/' + id + '/';
     return this.httpClient.delete<Choice>(url);

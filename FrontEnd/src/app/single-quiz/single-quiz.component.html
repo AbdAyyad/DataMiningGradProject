@@ -1,3 +1,10 @@
-<p>
-  single-quiz works!
-</p>
+<div class="container">
+  <p>{{question.question_body}}</p>
+  <ul>
+    <li *ngFor="let choice of choices; let i = index">
+      {{choice.text}} - {{choice.score}}
+    </li>
+  </ul>
+  <button type="button" class="btn btn-primary" (click)="back()">back</button>
+  <button type="button" class="btn btn-primary" (click)="next()">next</button>
+</div>

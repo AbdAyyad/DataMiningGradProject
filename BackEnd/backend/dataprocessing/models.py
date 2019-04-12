@@ -46,7 +46,7 @@ class Quiz(models.Model):
     dr = models.IntegerField()
 
 
-class Test(models.Model):
+class Result(models.Model):
     account = models.IntegerField()
     account_type = models.IntegerField()
     patient_first_name = models.TextField(max_length=300)
@@ -58,6 +58,6 @@ class Test(models.Model):
 
 
 class Answer(models.Model):
-    test = models.ForeignKey('Test', on_delete=models.CASCADE)
+    result = models.ForeignKey('Result', on_delete=models.CASCADE)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
     choice = models.ForeignKey('Choice', on_delete=models.CASCADE)

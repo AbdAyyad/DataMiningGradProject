@@ -27,6 +27,11 @@ export class QuizService {
     return this.httpClient.get<Quiz>(url);
   }
 
+  getQuizList(): Observable<[Quiz]> {
+    const url = 'http://127.0.0.1:8000/api/quiz/';
+    return this.httpClient.get<[Quiz]>(url);
+  }
+
   deleteQuiz(id: number): Observable<Quiz> {
     const url = 'http://127.0.0.1:8000/api/quiz/' + id + '/';
     return this.httpClient.delete<Quiz>(url);
