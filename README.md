@@ -1,7 +1,10 @@
 # DataMiningGradProject
 
 to run the code<br />
-first install python 3 and node.js<br />
+first install python 3, node.js and angular<br />
+https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe<br />
+https://nodejs.org/en/download/current/<br />
+https://cli.angular.io/<br />
 
 after installing python you need to create virtual enviroment<br />
 visit the link https://realpython.com/python-virtual-environments-a-primer/<br />
