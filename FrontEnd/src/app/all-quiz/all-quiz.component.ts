@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Quiz} from '../model/Quiz';
+import {Quiz} from '../../model/Quiz';
 import {QuizService} from '../../services/web/quiz.service';
 import {Router} from '@angular/router';
 import {ShowQuizService} from '../../services/component/show-quiz.service';
@@ -36,12 +36,16 @@ export class AllQuizComponent implements OnInit {
     if (this.drAuthService.getLoginReply().status) {
       this.showQuizService.setAccountType(1);
     } else {
-      this.showQuizService.setAccountType(1);
+      this.showQuizService.setAccountType(2);
     }
     this.questionService.getQuestionByQuizId(quizId).subscribe(
       result => {
         this.showQuestionService.setQuestions(result);
-        this.router.navigate(['/quiz/']);
+        if (this.showQuizService.getAccountType() === 1) {
+          this.router.navigate(['/dr/take']);
+        } else {
+          this.router.navigate(['/parent/quiz']);
+        }
       }
     );
   }

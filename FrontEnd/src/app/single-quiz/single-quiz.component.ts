@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from '../model/Question';
-import {Choice} from '../model/Choice';
+import {Question} from '../../model/Question';
+import {Choice} from '../../model/Choice';
 import {ChoiceService} from '../../services/web/choice.service';
 import {ShowQuestionService} from '../../services/component/show-question.service';
-import {Answer} from '../model/Answer';
+import {Answer} from '../../model/Answer';
 import {ResultService} from '../../services/web/result.service';
 import {AnswerService} from '../../services/web/answer.service';
-import {Result} from '../model/Result';
+import {Result} from '../../model/Result';
+import {ShowQuizService} from '../../services/component/show-quiz.service';
 
 @Component({
   selector: 'app-single-quiz',
@@ -24,7 +25,8 @@ export class SingleQuizComponent implements OnInit {
   constructor(private choiceService: ChoiceService,
               private showQuestionService: ShowQuestionService,
               private resultService: ResultService,
-              private answerService: AnswerService) {
+              private answerService: AnswerService,
+              private showQuizService: ShowQuizService) {
   }
 
   ngOnInit() {
@@ -75,14 +77,15 @@ export class SingleQuizComponent implements OnInit {
       console.log(score);
       total += score;
     });
-    console.log(total);
+
     const result: Result = {
+      quiz: this.showQuizService.getQuizId(),
       result: total,
       patient_first_name: 'a',
       account: 0,
       id: -1,
       patient_last_name: 'a',
-      account_type: 1,
+      account_type: this.showQuizService.getAccountType(),
       patient_birth_date: '2019-1-1',
       patient_sex: 1,
       time_stamp: '2019-1-1'

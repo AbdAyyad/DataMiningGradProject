@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Answer} from '../../model/Answer';
+import {Answer} from '../../../model/Answer';
 import {AnswerService} from '../../../services/web/answer.service';
 import {ShowResultService} from '../../../services/component/show-result.service';
 

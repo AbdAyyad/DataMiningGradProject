@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DrAuthService} from '../../../services/web/dr-auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dr-navbar',
@@ -9,7 +10,8 @@ import {DrAuthService} from '../../../services/web/dr-auth.service';
 export class DrNavbarComponent implements OnInit {
   drName: string;
 
-  constructor(private drAuthService: DrAuthService) {
+  constructor(private drAuthService: DrAuthService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -17,5 +19,7 @@ export class DrNavbarComponent implements OnInit {
   }
 
   signOut() {
+    this.drAuthService.LogOut();
+    this.router.navigate(['/']);
   }
 }

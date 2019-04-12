@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DrAuthService} from '../../services/web/dr-auth.service';
-import {LoginModel} from '../model/LoginModel';
+import {LoginModel} from '../../model/LoginModel';
 import {ParentAuthService} from '../../services/web/parent-auth.service';
 import {Router} from '@angular/router';
 
@@ -33,6 +33,7 @@ export class SignInComponent implements OnInit {
             console.log('not logged in');
           } else {
             button.click();
+            this.router.navigate(['/dr/new']);
           }
         }
       );

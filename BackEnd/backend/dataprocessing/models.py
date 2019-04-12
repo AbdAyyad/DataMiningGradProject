@@ -55,6 +55,7 @@ class Result(models.Model):
     patient_birth_date = models.DateField()
     time_stamp = models.DateField()
     result = models.DecimalField(decimal_places=3, max_digits=5)
+    quiz = models.IntegerField()
 
 
 class Answer(models.Model):

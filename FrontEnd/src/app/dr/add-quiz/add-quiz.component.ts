@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {QuizService} from '../../../services/web/quiz.service';
-import {Quiz} from '../../model/Quiz';
+import {Quiz} from '../../../model/Quiz';
 import {DrAuthService} from '../../../services/web/dr-auth.service';
-import {Question} from '../../model/Question';
+import {Question} from '../../../model/Question';
 import {QuestionService} from '../../../services/web/question.service';
 import {ChoiceService} from '../../../services/web/choice.service';
-import {Choice} from '../../model/Choice';
+import {Choice} from '../../../model/Choice';
 import {Router} from '@angular/router';
 
 @Component({

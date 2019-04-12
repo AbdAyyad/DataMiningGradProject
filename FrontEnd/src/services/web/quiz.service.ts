@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Quiz} from '../../app/model/Quiz';
-import {ServiceReply} from '../../app/model/ServiceReply';
+import {Quiz} from '../../model/Quiz';
+import {ServiceReply} from '../../model/ServiceReply';
 
 @Injectable({
   providedIn: 'root'

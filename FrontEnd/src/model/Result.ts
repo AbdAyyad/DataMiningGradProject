@@ -9,4 +9,5 @@ export class Result {
   account_type: number;
   patient_birth_date: string;
   time_stamp: string;
+  quiz: number;
 }
