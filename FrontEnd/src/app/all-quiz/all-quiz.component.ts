@@ -6,6 +6,7 @@ import {ShowQuizService} from '../../services/component/show-quiz.service';
 import {DrAuthService} from '../../services/web/dr-auth.service';
 import {QuestionService} from '../../services/web/question.service';
 import {ShowQuestionService} from '../../services/component/show-question.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-all-quiz',
@@ -14,6 +15,7 @@ import {ShowQuestionService} from '../../services/component/show-question.servic
 })
 export class AllQuizComponent implements OnInit {
   private data: [Quiz];
+  private formMode: boolean;
 
   constructor(private quizService: QuizService,
               private showQuizService: ShowQuizService,
@@ -29,9 +31,11 @@ export class AllQuizComponent implements OnInit {
         this.data = result;
       }
     );
+    this.formMode = true;
   }
 
   takeQuiz(quizId: number) {
+    this.formMode = true;
     this.showQuizService.setQuizId(quizId);
     if (this.drAuthService.getLoginReply().status) {
       this.showQuizService.setAccountType(1);
@@ -48,5 +52,10 @@ export class AllQuizComponent implements OnInit {
         }
       }
     );
+  }
+
+  submitTheForm(form: NgForm) {
+    this.formMode = false;
+    console.log('inside the submit');
   }
 }
