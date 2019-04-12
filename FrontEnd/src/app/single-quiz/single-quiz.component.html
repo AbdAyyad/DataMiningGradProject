@@ -1,10 +1,18 @@
 <div class="container">
   <p>{{question.question_body}}</p>
-  <ul>
-    <li *ngFor="let choice of choices; let i = index">
-      {{choice.text}} - {{choice.score}}
-    </li>
-  </ul>
-  <button type="button" class="btn btn-primary" (click)="back()">back</button>
-  <button type="button" class="btn btn-primary" (click)="next()">next</button>
+
+  <div class="radio" *ngFor="let choice of choices; let i = index">
+    <label (click)="commitQuestion(i)">
+      <input type="radio" name="opt">
+      {{choice.text}}
+    </label>
+  </div>
+
+
+  <button type="button" class="btn btn-primary" (click)="back()" [disabled]="questionIdx==0">Back</button>
+  <button type="button" class="btn btn-primary nextButton" *ngIf="!submitFlag; else submitArea" (click)="next()">Next
+  </button>
+  <ng-template #submitArea>
+    <button type="button" (click)="submitResult()" class="btn btn-primary nextButton">Submit</button>
+  </ng-template>
 </div>

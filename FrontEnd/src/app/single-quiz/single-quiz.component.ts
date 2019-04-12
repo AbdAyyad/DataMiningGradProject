@@ -3,6 +3,10 @@ import {Question} from '../model/Question';
 import {Choice} from '../model/Choice';
 import {ChoiceService} from '../../services/web/choice.service';
 import {ShowQuestionService} from '../../services/component/show-question.service';
+import {Answer} from '../model/Answer';
+import {ResultService} from '../../services/web/result.service';
+import {AnswerService} from '../../services/web/answer.service';
+import {Result} from '../model/Result';
 
 @Component({
   selector: 'app-single-quiz',
@@ -10,29 +14,37 @@ import {ShowQuestionService} from '../../services/component/show-question.servic
   styleUrls: ['./single-quiz.component.css']
 })
 export class SingleQuizComponent implements OnInit {
-  private choices: [Choice];
+  private choices: Choice[];
   private question: Question;
   private questionIdx: number;
+  private answers: Answer[];
+  private totalScore: number[];
+  private submitFlag: boolean;
 
   constructor(private choiceService: ChoiceService,
-              private showQuestionService: ShowQuestionService) {
+              private showQuestionService: ShowQuestionService,
+              private resultService: ResultService,
+              private answerService: AnswerService) {
   }
 
   ngOnInit() {
+    this.submitFlag = false;
+    this.answers = new Array<Answer>(this.showQuestionService.getLength());
+    this.totalScore = [];
+    for (let i = 0; i < this.showQuestionService.getLength(); ++i) {
+      this.totalScore.push(0);
+    }
     this.showQuestionService.nextIdx();
     this.updateUi();
   }
 
   updateUi() {
-    console.log('ui updated');
     this.questionIdx = this.showQuestionService.getIdx();
-    console.log('question idx', this.questionIdx);
+    this.submitFlag = this.questionIdx === this.showQuestionService.getLength() - 1;
     this.question = this.showQuestionService.getQuestion(this.questionIdx);
-    console.log('question', this.question);
     this.choiceService.getChoiceByQuestionId(this.question.id).subscribe(
       result => {
         this.choices = result;
-        console.log('choices', this.choices);
       }
     );
 
@@ -46,6 +58,45 @@ export class SingleQuizComponent implements OnInit {
   back() {
     this.showQuestionService.backIdx();
     this.updateUi();
+  }
+
+  commitQuestion(idx: number) {
+    this.answers[this.questionIdx] = {
+      choice: this.choices[idx].id,
+      question: this.question.id,
+      result: 0
+    };
+    this.totalScore[this.questionIdx] = +this.choices[idx].score;
+  }
+
+  submitResult() {
+    let total = 0;
+    this.totalScore.forEach(score => {
+      console.log(score);
+      total += score;
+    });
+    console.log(total);
+    const result: Result = {
+      result: total,
+      patient_first_name: 'a',
+      account: 0,
+      id: -1,
+      patient_last_name: 'a',
+      account_type: 1,
+      patient_birth_date: '2019-1-1',
+      patient_sex: 1,
+      time_stamp: '2019-1-1'
+    };
+    this.resultService.postResult(result).subscribe(
+      reply => {
+        this.answers.forEach(
+          answer => {
+            answer.result = reply.id;
+            this.answerService.postAnswer(answer).subscribe();
+          }
+        );
+      }
+    );
   }
 
 }

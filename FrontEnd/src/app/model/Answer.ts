@@ -1,5 +1,5 @@
 export class Answer {
-  test: number;
-  question: number;
   choice: number;
+  question: number;
+  result: number;
 }

@@ -32,4 +32,8 @@ export class ShowQuestionService {
   getIdx(): number {
     return this.idx;
   }
+
+  getLength(): number {
+    return this.questions.length;
+  }
 }
