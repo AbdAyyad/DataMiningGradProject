@@ -391,3 +391,51 @@ values(52,
 'مستوى نشاط غير طبيعي بدرجة شديدة: يظهر الطفل تطرفا إما في الحركة او في عدم الحركة كما وأنه قج يبجل او ينقل سلوكه من مستوى متطرف لاخر' 
 , 3.5
 ,13);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(53,
+'الذكاء الطبيعي ثابت و متماسك عبر عدة مجالات : يساوي ذكاء الطفل ذكاء اي كفل اخر من الفئة العمرية نفسها و ليس لديه اي مهارات فكرية غير عادية او صعوبات' 
+, 0
+,14);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(54,
+'اداء فكري غير طبيعي بدرجة بسيطة: يظهر الطف مستوى ذكاء منخفض جداً  معدل حاصل الذكاؤ 70 او ادنى  و تبدو مهاراته متأخرة نسبيا في كافة المجالات' 
+, 1.5
+,14);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(55,
+'اداء فكري غير طبيعي بدرجة متوسطة: ذكاء الطفل الاجمالي  يتراوح بين المعدل والقصور العقلي حاصل ذكاء اقل من 115  هناك تفاوت ذات دلالة في المهارات و نجد على القل مهارة واحدة ضمن المعدل ' 
+, 2.5
+,14);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(56,
+'أداء فكري غير طبيعي بدرجة شديدة: يعطى تقيم 4 لدى وجود مهارات عالمة قصوى  و ذلك بغض النظر عن المستوى الالاجمالي للذكاء' 
+, 3.5
+,14);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(57,
+'عدم وجود اضراب التوحد: لا يظهر الطفل ايا من الاعراض التي تميز التوحد' 
+, 0
+,15);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(58,
+'وجود بسيط لاضراب التوحد: يظهر الطفل بعض الاعراض او درجة توحد خفيفة فقط' 
+, 1.5
+,15);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(59,
+'وجود متوسط لاضراب التوحد: يظهر الطفل عددا من الاعراض او درجة متوسطة من التوحد' 
+, 2.5
+,15);
+
+insert into public.dataprocessing_choice(id,text,score,question_id)
+values(60,
+'وجود شديد لاضراب التوحد: يظهر الطفل عددا كبيرا من الاعراض أو درجة قصوى من التوحد' 
+, 3.5
+,15);
