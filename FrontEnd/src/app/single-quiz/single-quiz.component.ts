@@ -23,6 +23,7 @@ export class SingleQuizComponent implements OnInit {
   private totalScore: number[];
   private submitFlag: boolean;
   private seeResult: boolean;
+  private total: number;
 
   constructor(private choiceService: ChoiceService,
               private showQuestionService: ShowQuestionService,
@@ -33,6 +34,7 @@ export class SingleQuizComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.total = 0;
     this.submitFlag = false;
     this.answers = new Array<Answer>(this.showQuestionService.getLength());
     this.totalScore = [];
@@ -45,6 +47,7 @@ export class SingleQuizComponent implements OnInit {
   }
 
   updateUi() {
+    this.total = 0;
     this.seeResult = false;
     this.questionIdx = this.showQuestionService.getIdx();
     this.submitFlag = this.questionIdx === this.showQuestionService.getLength() - 1;
@@ -67,13 +70,13 @@ export class SingleQuizComponent implements OnInit {
     this.updateUi();
   }
 
-  commitQuestion(idx: number) {
+  commitQuestion(choice: Choice) {
     this.answers[this.questionIdx] = {
-      choice: this.choices[idx].id,
+      choice: choice.id,
       question: this.question.id,
       result: 0
     };
-    this.totalScore[this.questionIdx] = +this.choices[idx].score;
+    this.totalScore[this.questionIdx] = choice.score;
   }
 
   submitResult() {
@@ -83,6 +86,7 @@ export class SingleQuizComponent implements OnInit {
       total += score;
     });
     this.seeResult = true;
+    this.total = total;
     const date = new Date();
     const result: Result = {
       quiz: this.showQuizService.getQuizId(),
