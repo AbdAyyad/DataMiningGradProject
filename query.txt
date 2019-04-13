@@ -1,0 +1,79 @@
+﻿insert into public.dataprocessing_quiz(id,title,dr)
+values(1,
+'توحد' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(1,
+'التعاطي مع الناس' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(2,
+'التقليد' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(3,
+'الإستجابة العاطفية' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(4,
+'إستخدام الجسد' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(5,
+'استخدام الأشياء' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(6,
+'التأقلم مع التغيير' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(7,
+'الإستجابة البصرية' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(8,
+'الاستجابة السمعية' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(9,
+'استخدام الحواس الئوق والشم واللمس والإستجابة لها' 
+, 1); 
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(10,
+'الخوف او العصبية' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(11,
+'التواصل ال لفظي' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(12,
+'التواصل غير اللفظي' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(13,
+'مستوى النشاط' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(14,
+'مستوى و ثبات التجاوب الفكري' 
+, 1);
+
+insert into public.dataprocessing_question(id,question_body,quiz_id)
+values(15,
+'الإنطباعات العامة' 
+, 1);
