@@ -8,12 +8,16 @@ https://cli.angular.io/<br />
 
 after installing python you need to create virtual enviroment<br />
 visit the link https://realpython.com/python-virtual-environments-a-primer/<br />
+<br />
+for python 3<br />
+python -m venv env<br />
+<br />
 then activate the enviroment by run ./venv/Scripts/activate<br />
 the terminal will give you an indicator <br />
 
 after activiating the enviroment write the following in the terminal<br />
 <br />
-pip install requirments.txt<br />
+pip install -r requirments.txt<br />
 <br />
 in the backend folder you will find manage.py file<br />
 <br />
