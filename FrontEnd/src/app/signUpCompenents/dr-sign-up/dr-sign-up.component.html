@@ -10,18 +10,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="drSignUpModalLabel">Dr Sign up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closebtn>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="submit(form)" #form="ngForm">
-          <input type="text" ngModel name="drFirstName" placeholder="First Name" class="form-control">
-          <input type="text" ngModel name="drLastName" placeholder="Last Name" class="form-control">
-          <input type="email" ngModel name="drEmail" placeholder="Email" class="form-control">
+        <form (ngSubmit)="submit(form,closebtn)" #form="ngForm">
+          <input type="text" ngModel name="dr_first_name" placeholder="First Name" class="form-control">
+          <input type="text" ngModel name="dr_last_name" placeholder="Last Name" class="form-control">
+          <input type="email" ngModel name="dr_email" placeholder="Email" class="form-control">
           <input type="password" ngModel name="password" placeholder="Password" class="form-control">
-          <input type="password" name="drConfirmPassword" placeholder="confirm password" class="form-control">
-          <input type="text" ngModel name="jobId" placeholder="Job ID" class="form-control">
+          <!--          <input type="password" name="drConfirmPassword" placeholder="confirm password" class="form-control">-->
+          <input type="text" ngModel name="job_id" placeholder="Job ID" class="form-control">
           <div id="drSignUpSubmit">
             <button type="submit" class="btn btn-primary">submit</button>
           </div>

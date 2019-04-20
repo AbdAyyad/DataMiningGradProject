@@ -30,13 +30,9 @@ export class ParentAuthService {
 
   logIn(loginModel: LoginModel) {
     const url = 'http://127.0.0.1:8000/api/parentlogin/';
-    this.httpClient.post<LoginReply>(url, loginModel).subscribe(
-      result => {
-        if (this.loginReply.status) {
-          this.router.navigate(['/dr']);
-        }
-      }
-    );
+    this.httpClient.post<LoginReply>(url, loginModel).subscribe(result => {
+      this.loginReply = result;
+    });
   }
 
   LogOut() {

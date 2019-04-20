@@ -16,8 +16,9 @@ export class DrSignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(form: NgForm): void {
+  submit(form: NgForm, btn: HTMLButtonElement): void {
     this.signUpService.signUpDr(form.value).subscribe(result => {
+      btn.click();
       this.router.navigate(['sign-complete']);
     });
   }

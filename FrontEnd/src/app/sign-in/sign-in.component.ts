@@ -51,17 +51,18 @@ export class SignInComponent implements OnInit {
     };
 
     this.parentAuthService.logIn(loginModel);
-    this.parentAuthService.isAuthenticated().then(
-      (result) => {
-        if (!result) {
-          this.error = true;
-        } else {
-          this.error = false;
-
-          button.click();
+    setTimeout(() => {
+      this.parentAuthService.isAuthenticated().then(
+        (result) => {
+          if (!result) {
+            this.error = true;
+          } else {
+            this.error = false;
+            this.router.navigate(['parent/quiz']);
+            button.click();
+          }
         }
-      }
-    );
-
+      );
+    }, 500);
   }
 }

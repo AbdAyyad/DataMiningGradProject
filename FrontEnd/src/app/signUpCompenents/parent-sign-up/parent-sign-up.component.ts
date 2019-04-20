@@ -16,8 +16,9 @@ export class ParentSignUpComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit(form: NgForm) {
+  submit(form: NgForm, btn: HTMLButtonElement) {
     this.signUp.signUpPatient(form.value).subscribe(result => {
+      btn.click();
       this.router.navigate(['sign-complete']);
     });
   }

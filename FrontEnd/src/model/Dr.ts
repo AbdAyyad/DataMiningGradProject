@@ -1,7 +1,8 @@
+/*tslint:disable*/
 export class Dr {
-  drFirstName: string;
-  drLastName: string;
-  drEmail: string;
+  dr_first_name: string;
+  dr_last_name: string;
+  dr_email: string;
   password: string;
-  jobId: string;
+  job_id: string;
 }

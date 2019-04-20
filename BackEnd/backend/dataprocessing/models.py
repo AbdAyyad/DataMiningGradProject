@@ -7,10 +7,10 @@ from django.db import models
 
 
 class Dr(AbstractBaseUser):
-    drEmail = models.EmailField(unique=True)
-    drFirstName = models.TextField(max_length=25)
-    drLastName = models.TextField(max_length=25)
-    jobId = models.TextField(max_length=10, unique=True)
+    dr_email = models.EmailField(unique=True)
+    dr_first_name = models.TextField(max_length=25)
+    dr_last_name = models.TextField(max_length=25)
+    job_id = models.TextField(max_length=10, unique=True)
 
     def save(self, *args, **kwargs):
         self.set_password(raw_password=self.password)
@@ -18,9 +18,9 @@ class Dr(AbstractBaseUser):
 
 
 class Parent(AbstractBaseUser):
-    parentEmail = models.EmailField(unique=True)
-    parentFirstName = models.TextField(max_length=25)
-    parentLastName = models.TextField(max_length=25)
+    parent_email = models.EmailField(unique=True)
+    parent_first_name = models.TextField(max_length=25)
+    parent_last_name = models.TextField(max_length=25)
 
     def save(self, *args, **kwargs):
         self.set_password(raw_password=self.password)

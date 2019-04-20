@@ -46,19 +46,19 @@ class DrLoginView(APIView):
     def post(self, request, format=None):
         email = request.data['email']
         password = request.data['password']
-        dr = models.Dr.objects.filter(drEmail=email).first()
+        dr = models.Dr.objects.filter(dr_email=email).first()
         result = dr.check_password(password)
-        return Response({'status': result, 'name': dr.drFirstName, 'email': dr.drEmail, 'id': dr.id})
+        return Response({'status': result, 'name': dr.dr_first_name, 'email': dr.dr_email, 'id': dr.id})
 
 
 class ParentLoginView(APIView):
     def post(self, request, format=None):
         email = request.data['email']
         password = request.data['password']
-        parent = models.Parent.objects.filter(parentEmail=email).first()
+        parent = models.Parent.objects.filter(parent_email=email).first()
         result = parent.check_password(password)
         return Response(
-            {'status': result, 'name': parent.parentFirstNamee, 'email': parent.parentEmail, 'id': parent.id})
+            {'status': result, 'name': parent.parent_first_name, 'email': parent.parent_email, 'id': parent.id})
 
 
 class ResultAnswerView(generics.ListAPIView):

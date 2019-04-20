@@ -1,6 +1,7 @@
+/*tslint:disable*/
 export class Parent {
-  patientFirstName: string;
-  patientLastName: string;
-  patientEmail: string;
+  patient_first_name: string;
+  patient_last_name: string;
+  patient_email: string;
   password: string;
 }

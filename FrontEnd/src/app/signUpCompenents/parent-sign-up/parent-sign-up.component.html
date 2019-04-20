@@ -10,17 +10,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="patientSignUpModalLabel">Parent Sign up</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closebtn>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="submit(form)" #form="ngForm">
-          <input type="text" ngModel name="parentFirstName" placeholder="First Name" class="form-control">
-          <input type="text" ngModel name="parentLastName" placeholder="Last Name" class="form-control">
-          <input type="email" ngModel name="parentEmail" placeholder="Email" class="form-control">
+        <form (ngSubmit)="submit(form,closebtn)" #form="ngForm">
+          <input type="text" ngModel name="parent_first_name" placeholder="First Name" class="form-control">
+          <input type="text" ngModel name="parent_last_name" placeholder="Last Name" class="form-control">
+          <input type="email" ngModel name="parent_email" placeholder="Email" class="form-control">
           <input type="password" ngModel name="password" placeholder="Password" class="form-control">
-          <input type="password" name="patientConfirmPassword" placeholder="confirm password" class="form-control">
+<!--          <input type="password" name="patientConfirmPassword" placeholder="confirm password" class="form-control">-->
           <div style="width: 100%">
             <button type="submit" class="btn btn-primary" id="patientSignUpSubmit">submit</button>
           </div>
