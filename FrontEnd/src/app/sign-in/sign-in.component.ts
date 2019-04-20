@@ -40,7 +40,7 @@ export class SignInComponent implements OnInit {
           }
         }
       );
-    }, 500);
+    }, 800);
 
   }
 
@@ -63,6 +63,6 @@ export class SignInComponent implements OnInit {
           }
         }
       );
-    }, 500);
+    }, 800);
   }
 }

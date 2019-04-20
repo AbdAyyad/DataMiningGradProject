@@ -43,13 +43,16 @@ export class AddQuizComponent implements OnInit {
     let scoreCKey: string;
     let scoreDKey: string;
 
+
     const quiz: Quiz = {
       dr: this.drAuthService.getLoginReply().id,
       title: form.value.title,
       id: -1
     };
 
+
     this.quizService.postQuiz(quiz).subscribe(quizReply => {
+      console.log('quiz', quiz);
       this.data.forEach(
         idx => {
           questionKey = 'question' + idx;
@@ -59,6 +62,7 @@ export class AddQuizComponent implements OnInit {
             quiz: quizReply.id,
             id: -1
           };
+          console.log('question', question);
           this.questionService.postQuestion(question).subscribe(
             questionReply => {
               choiceAKey = 'choice1-' + idx;
@@ -77,6 +81,7 @@ export class AddQuizComponent implements OnInit {
                 text: form.value[choiceBKey],
                 id: -1
               };
+              console.log('choiceB', choiceB);
 
               const choiceC: Choice = {
                 question: questionReply.id,
@@ -84,6 +89,7 @@ export class AddQuizComponent implements OnInit {
                 text: form.value[choiceCKey],
                 id: -1
               };
+              console.log('choiceB', choiceC);
 
               const choiceD: Choice = {
                 question: questionReply.id,
@@ -91,6 +97,7 @@ export class AddQuizComponent implements OnInit {
                 text: form.value[choiceDKey],
                 id: -1
               };
+              console.log('choiceD', choiceD);
 
               const choiceA: Choice = {
                 question: questionReply.id,
@@ -98,6 +105,7 @@ export class AddQuizComponent implements OnInit {
                 text: form.value[choiceAKey],
                 id: -1
               };
+              console.log('choiceA', choiceB);
 
               this.choiceService.postChoice(choiceA).subscribe(ignore => {
               });
