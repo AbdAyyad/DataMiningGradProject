@@ -12,7 +12,8 @@ visit the link https://realpython.com/python-virtual-environments-a-primer/<br /
 for python 3<br />
 python -m venv env<br />
 <br />
-then activate the enviroment by run ./env/Scripts/activate<br />
+then activate the enviroment by run<br />
+./env/Scripts/activate<br />
 the terminal will give you an indicator <br />
 
 after activiating the enviroment write the following in the terminal<br />
@@ -23,6 +24,7 @@ in the backend folder you will find manage.py file<br />
 <br />
 run this commad for applying migration <br />
 python manage.py migrate<br />
+<br />
 for running server<br />
 python manage.py runserver<br />
 <br />
