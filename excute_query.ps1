@@ -1,0 +1,1 @@
+psql -U postgres -d datamining -a -f .\query.sql
