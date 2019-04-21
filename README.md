@@ -12,7 +12,7 @@ visit the link https://realpython.com/python-virtual-environments-a-primer/<br /
 for python 3<br />
 python -m venv env<br />
 <br />
-then activate the enviroment by run ./venv/Scripts/activate<br />
+then activate the enviroment by run ./env/Scripts/activate<br />
 the terminal will give you an indicator <br />
 
 after activiating the enviroment write the following in the terminal<br />
