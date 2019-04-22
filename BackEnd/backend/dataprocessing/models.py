@@ -35,7 +35,8 @@ class Question(models.Model):
 
 class Choice(models.Model):
     id = models.AutoField(primary_key=True)
-    text = models.TextField(max_length=300)
+    title = models.TextField(max_length=300)
+    description = models.TextField(max_length=300)
     question = models.ForeignKey('Question', on_delete=models.CASCADE)
     score = models.DecimalField(decimal_places=3, max_digits=5)
 

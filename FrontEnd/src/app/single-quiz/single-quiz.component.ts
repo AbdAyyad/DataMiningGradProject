@@ -82,7 +82,6 @@ export class SingleQuizComponent implements OnInit {
   submitResult() {
     let total = 0;
     this.totalScore.forEach(score => {
-      console.log(score);
       total += +score;
     });
     this.seeResult = true;
