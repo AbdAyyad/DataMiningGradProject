@@ -2,13 +2,13 @@
 <div class="container">
   <table class="table">
     <thead>
-    <th>question id</th>
-    <th>chosen choice id</th>
+    <th>question</th>
+    <th>chosen choice</th>
     </thead>
     <tbody>
     <tr *ngFor="let item of data;let i = index;">
-      <td>{{item.question}}</td>
-      <td>{{item.result}}</td>
+      <td>{{getQuestionBody(item.question)}}</td>
+      <td>{{getChoiceBody(item.choice)}}</td>
     </tr>
     </tbody>
   </table>

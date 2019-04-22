@@ -25,8 +25,10 @@ export class ResultsComponent implements OnInit {
     );
   }
 
-  seeAnswers(id: number) {
+  seeAnswers(id: number, quizId: number) {
     this.showResultService.setResultId(id);
+    this.showResultService.fillQuestions(quizId);
+    this.showResultService.fillChoices();
     this.router.navigate(['/dr/answer']);
   }
 

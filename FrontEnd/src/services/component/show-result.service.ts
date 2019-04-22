@@ -1,4 +1,9 @@
+/*tslint:disable*/
 import {Injectable} from '@angular/core';
+import {QuestionService} from '../web/question.service';
+import {Question} from '../../model/Question';
+import {ChoiceService} from '../web/choice.service';
+import {Choice} from '../../model/Choice';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +14,11 @@ export class ShowResultService {
   private _patentLastName: string;
   private _patentBirthDate: string;
   private _patentSex: number;
+  private _questions;
+  private _choices;
 
-  constructor() {
+  constructor(private questionService: QuestionService,
+              private choiceService: ChoiceService) {
     this.resultId = -1;
   }
 
@@ -52,5 +60,27 @@ export class ShowResultService {
 
   set patentSex(value: number) {
     this._patentSex = value;
+  }
+
+  fillQuestions(id: number) {
+    this.questionService.getQuestionByQuizId(id).subscribe(
+      result => {
+        this._questions = result;
+      }
+    );
+  }
+
+  fillChoices() {
+    this.choiceService.getAllChoices().subscribe(result => {
+      this._choices = result;
+    });
+  }
+
+  get questions(): [Question] {
+    return this._questions;
+  }
+
+  get choices(): [Choice] {
+    return this._choices;
   }
 }

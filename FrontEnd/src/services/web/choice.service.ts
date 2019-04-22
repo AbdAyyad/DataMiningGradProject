@@ -37,4 +37,9 @@ export class ChoiceService {
     return this.httpClient.delete<Choice>(url);
   }
 
+  getAllChoices(): Observable<Choice[]> {
+    const url = 'http://127.0.0.1:8000/api/choice/';
+    return this.httpClient.get<Choice[]>(url);
+  }
+
 }

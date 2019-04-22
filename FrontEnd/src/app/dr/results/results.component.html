@@ -9,7 +9,7 @@
     <th>quiz</th>
     </thead>
     <tbody>
-    <tr *ngFor="let item of data;let i = index" (click)="seeAnswers(item.id)">
+    <tr *ngFor="let item of data;let i = index" (click)="seeAnswers(item.id,item.quiz)">
       <td>{{i + 1}}</td>
       <td>{{item.patient_first_name}}</td>
       <td>{{item.patient_last_name}}</td>
