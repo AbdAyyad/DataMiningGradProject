@@ -76,33 +76,37 @@ export class AddQuizComponent implements OnInit {
               scoreDKey = 'score4-' + idx;
 
               const choiceB: Choice = {
+                description: '',
                 question: questionReply.id,
                 score: form.value[scoreBKey],
-                text: form.value[choiceBKey],
+                title: form.value[choiceBKey],
                 id: -1
               };
               console.log('choiceB', choiceB);
 
               const choiceC: Choice = {
+                description: '',
                 question: questionReply.id,
                 score: form.value[scoreCKey],
-                text: form.value[choiceCKey],
+                title: form.value[choiceCKey],
                 id: -1
               };
               console.log('choiceB', choiceC);
 
               const choiceD: Choice = {
+                description: '',
                 question: questionReply.id,
                 score: form.value[scoreDKey],
-                text: form.value[choiceDKey],
+                title: form.value[choiceDKey],
                 id: -1
               };
               console.log('choiceD', choiceD);
 
               const choiceA: Choice = {
+                description: '',
                 question: questionReply.id,
                 score: form.value[scoreAKey],
-                text: form.value[choiceAKey],
+                title: form.value[choiceAKey],
                 id: -1
               };
               console.log('choiceA', choiceB);

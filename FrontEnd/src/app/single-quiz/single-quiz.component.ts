@@ -17,6 +17,7 @@ import {ShowResultService} from '../../services/component/show-result.service';
 })
 export class SingleQuizComponent implements OnInit {
   private choices: Choice[];
+  private choiceMap: Map<number, boolean>;
   private question: Question;
   private questionIdx: number;
   private answers: Answer[];
@@ -55,9 +56,21 @@ export class SingleQuizComponent implements OnInit {
     this.choiceService.getChoiceByQuestionId(this.question.id).subscribe(
       result => {
         this.choices = result;
+        this.choiceMap = new Map<number, boolean>();
+        result.forEach(choice => {
+          this.choiceMap.set(choice.id, false);
+        });
       }
     );
 
+  }
+
+  showDescription(idx: number) {
+    this.choiceMap.set(idx, true);
+  }
+
+  hideDescription(idx: number) {
+    this.choiceMap.set(idx, false);
   }
 
   next() {

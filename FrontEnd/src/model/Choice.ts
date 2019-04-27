@@ -1,6 +1,7 @@
 export class Choice {
   question: number;
-  text: string;
+  title: string;
+  description: string;
   score: number;
   id: number;
 }

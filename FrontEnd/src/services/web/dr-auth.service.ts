@@ -39,6 +39,7 @@ export class DrAuthService {
         // ******************************************8
         // ******************************************8
         resolve(this.loginReply.status);
+        // resolve(true);
         reject(false);
       }
     );

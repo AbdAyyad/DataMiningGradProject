@@ -35,10 +35,12 @@ export class AllQuizComponent implements OnInit {
         this.data = result;
       }
     );
-    this.formMode = true;
+    // this.formMode = true;
+    this.formMode = false;
   }
 
   takeQuiz(quizId: number) {
+    console.log(quizId);
     this.formMode = true;
     this.showQuizService.setQuizId(quizId);
     if (this.drAuthService.getLoginReply().status) {
@@ -51,10 +53,10 @@ export class AllQuizComponent implements OnInit {
     this.questionService.getQuestionByQuizId(quizId).subscribe(
       result => {
         this.showQuestionService.setQuestions(result);
-        if (this.showQuizService.getAccountType() === 1) {
-          this.router.navigate(['/dr/take']);
-        } else {
+        if (this.showQuizService.getAccountType() === 2) {
           this.router.navigate(['/parent/take']);
+        } else {
+          this.router.navigate(['/dr/take']);
         }
       }
     );

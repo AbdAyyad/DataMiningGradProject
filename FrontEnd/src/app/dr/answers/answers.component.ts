@@ -34,7 +34,7 @@ export class AnswersComponent implements OnInit {
     let str = '';
     this.showResultService.choices.forEach(choice => {
       if (choice.id === id) {
-        str = choice.text;
+        str = choice.title;
         return;
       }
     });
