@@ -42,6 +42,10 @@ export class AddQuizComponent implements OnInit {
     let scoreBKey: string;
     let scoreCKey: string;
     let scoreDKey: string;
+    let descAKey: string;
+    let descBKey: string;
+    let descCKey: string;
+    let descDKey: string;
 
 
     const quiz: Quiz = {
@@ -50,6 +54,8 @@ export class AddQuizComponent implements OnInit {
       id: -1
     };
 
+    const drForm = this.deepCopy(form.value);
+    // const choiceService = this.deepCopy(this.choiceService);
 
     this.quizService.postQuiz(quiz).subscribe(quizReply => {
       console.log('quiz', quiz);
@@ -75,38 +81,43 @@ export class AddQuizComponent implements OnInit {
               scoreCKey = 'score3-' + idx;
               scoreDKey = 'score4-' + idx;
 
+              descAKey = 'desc1-' + idx;
+              descBKey = 'desc2-' + idx;
+              descCKey = 'desc3-' + idx;
+              descDKey = 'desc4-' + idx;
+
               const choiceB: Choice = {
-                description: '',
+                description: drForm[descBKey],
                 question: questionReply.id,
-                score: form.value[scoreBKey],
-                title: form.value[choiceBKey],
+                score: drForm[scoreBKey],
+                title: drForm[choiceBKey],
                 id: -1
               };
               console.log('choiceB', choiceB);
 
               const choiceC: Choice = {
-                description: '',
+                description: drForm[descCKey],
                 question: questionReply.id,
-                score: form.value[scoreCKey],
-                title: form.value[choiceCKey],
+                score: drForm[scoreCKey],
+                title: drForm[choiceCKey],
                 id: -1
               };
               console.log('choiceB', choiceC);
 
               const choiceD: Choice = {
-                description: '',
+                description: drForm[descDKey],
                 question: questionReply.id,
-                score: form.value[scoreDKey],
-                title: form.value[choiceDKey],
+                score: drForm[scoreDKey],
+                title: drForm[choiceDKey],
                 id: -1
               };
               console.log('choiceD', choiceD);
 
               const choiceA: Choice = {
-                description: '',
+                description: drForm[descAKey],
                 question: questionReply.id,
-                score: form.value[scoreAKey],
-                title: form.value[choiceAKey],
+                score: drForm[scoreAKey],
+                title: drForm[choiceAKey],
                 id: -1
               };
               console.log('choiceA', choiceB);
@@ -123,8 +134,49 @@ export class AddQuizComponent implements OnInit {
           );
         }
       );
-      this.router.navigate(['/dr/submit']);
+      setTimeout(() => {
+        this.router.navigate(['/dr/submit']);
+      }, 1000);
     });
   }
+
+  deepCopy(obj) {
+    let copy;
+
+    // Handle the 3 simple types, and null or undefined
+    if (null == obj || 'object' !== typeof obj) {
+      return obj;
+    }
+
+    // Handle Date
+    if (obj instanceof Date) {
+      copy = new Date();
+      copy.setTime(obj.getTime());
+      return copy;
+    }
+
+    // Handle Array
+    if (obj instanceof Array) {
+      copy = [];
+      for (let i = 0, len = obj.length; i < len; i++) {
+        copy[i] = this.deepCopy(obj[i]);
+      }
+      return copy;
+    }
+
+    // Handle Object
+    if (obj instanceof Object) {
+      copy = {};
+      for (let attr in obj) {
+        if (obj.hasOwnProperty(attr)) {
+          copy[attr] = this.deepCopy(obj[attr]);
+        }
+      }
+      return copy;
+    }
+
+    throw new Error('Unable to copy obj! Its type isn\'t supported.');
+  }
+
 
 }
