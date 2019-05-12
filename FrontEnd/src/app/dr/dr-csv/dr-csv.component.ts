@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CsvService} from '../../../services/web/csv.service';
 import {ShowResultService} from '../../../services/component/show-result.service';
+// @ts-ignore
 import {Csv} from '../../../model/Csv';
 
 @Component({

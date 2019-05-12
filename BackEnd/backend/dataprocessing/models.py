@@ -53,8 +53,8 @@ class Result(models.Model):
     patient_first_name = models.TextField(max_length=300)
     patient_last_name = models.TextField(max_length=300)
     patient_sex = models.IntegerField()
-    patient_birth_date = models.DateField()
-    time_stamp = models.DateField()
+    patient_birth_date = models.CharField(max_length=25)
+    time_stamp = models.CharField(max_length=25)
     result = models.DecimalField(decimal_places=3, max_digits=5)
     quiz = models.IntegerField()
 

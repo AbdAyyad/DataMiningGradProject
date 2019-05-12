@@ -35,8 +35,7 @@ export class AllQuizComponent implements OnInit {
         this.data = result;
       }
     );
-    // this.formMode = true;
-    this.formMode = false;
+    this.formMode = true;
   }
 
   takeQuiz(quizId: number) {
