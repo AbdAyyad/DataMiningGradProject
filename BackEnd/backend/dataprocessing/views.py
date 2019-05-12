@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import generics
+import csv
 
 from . import models
 from . import serializers
@@ -85,5 +86,32 @@ class ChoiceQuestionView(generics.ListAPIView):
     def get_queryset(self):
         question_id = self.kwargs['question_id']
         answers = models.Choice.objects.filter(question=question_id)
-        # test commit
         return answers
+
+
+class CsvView(APIView):
+    def get(self, request, *args, **kwargs):
+        result_id = self.kwargs["result_id"]
+        print(result_id)
+        # for testing api
+        # result = models.Result.objects.filter(id=result_id).first()
+        answers = models.Answer.objects.filter(result_id=result_id)
+        head = []
+        body = []
+        for i in range(len(answers)):
+            head.append("Q" + str(i))
+
+        for answer in answers:
+            body.append(answer.choice)
+        # csvData = [['Person', 'Age'], ['Peter', '22'], ['Jasmine', '21'], ['Sam', '24']]
+        csvData = [head, body]
+
+        with open(str(result_id) + '.csv', 'w') as csvFile:
+            writer = csv.writer(csvFile)
+            writer.writerows(csvData)
+
+        csvFile.close()
+
+        # backend/1.csv
+        path = 'backend/' + str(result_id) + '.csv'
+        return Response({"path": path, 'data': csvData})

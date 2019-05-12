@@ -6,3 +6,4 @@
 /FrontEnd/out-tsc/
 /FrontEnd/.idea/
 /FrontEnd/package-lock.json
+*.csv
