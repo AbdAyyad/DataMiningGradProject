@@ -1,0 +1,15 @@
+<app-dr-navbar></app-dr-navbar>
+<div class="container">
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let head of csv.head;">{{head}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td *ngFor="let body of csv.body;">{{body}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>

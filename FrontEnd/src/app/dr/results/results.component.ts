@@ -32,4 +32,8 @@ export class ResultsComponent implements OnInit {
     this.router.navigate(['/dr/answer']);
   }
 
+  seeCsv(id: number) {
+    this.showResultService.setResultId(id);
+  }
+
 }

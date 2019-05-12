@@ -114,4 +114,4 @@ class CsvView(APIView):
 
         # backend/1.csv
         path = 'backend/' + str(result_id) + '.csv'
-        return Response({"path": path, 'data': csvData})
+        return Response({'head': head, 'body': body})

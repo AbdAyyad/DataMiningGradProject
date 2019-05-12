@@ -21,7 +21,6 @@ import {AllQuizComponent} from './all-quiz/all-quiz.component';
 import {SignUpCompleteComponent} from './signUpCompenents/sign-up-complete/sign-up-complete.component';
 import {DrNavbarComponent} from './dr/dr-navbar/dr-navbar.component';
 import {ResultsComponent} from './dr/results/results.component';
-import {CookieService} from 'angular2-cookie/core';
 import {SubmitComponent} from './dr/submit/submit.component';
 import {AnswersComponent} from './dr/answers/answers.component';
 import {ShowResultService} from '../services/component/show-result.service';
@@ -35,8 +34,10 @@ import {ParentAllQuizComponent} from './parent/parent-all-quiz/parent-all-quiz.c
 import {SingleQuizComponent} from './single-quiz/single-quiz.component';
 import {ShowQuizService} from '../services/component/show-quiz.service';
 import {ShowQuestionService} from '../services/component/show-question.service';
-import { DrTakeQuizComponent } from './dr/dr-take-quiz/dr-take-quiz.component';
-import { ParentTakeQuizComponent } from './parent/parent-take-quiz/parent-take-quiz.component';
+import {DrTakeQuizComponent} from './dr/dr-take-quiz/dr-take-quiz.component';
+import {ParentTakeQuizComponent} from './parent/parent-take-quiz/parent-take-quiz.component';
+import {DrCsvComponent} from './dr/dr-csv/dr-csv.component';
+import {CsvService} from '../services/web/csv.service';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -46,6 +47,7 @@ const route: Routes = [
   {path: 'dr/result', component: ResultsComponent, canActivate: [DrGuardService]},
   {path: 'dr/submit', component: SubmitComponent, canActivate: [DrGuardService]},
   {path: 'dr/answer', component: AnswersComponent, canActivate: [DrGuardService]},
+  {path: 'dr/csv', component: DrCsvComponent, canActivate: [DrGuardService]},
   {path: 'dr/quiz', component: DrAllQuizComponent, canActivate: [DrGuardService]},
   {path: 'dr/take', component: DrTakeQuizComponent, canActivate: [DrGuardService]},
   {path: 'parent/quiz', component: ParentAllQuizComponent, canActivate: [ParentGuardService]},
@@ -74,7 +76,8 @@ const route: Routes = [
     ParentAllQuizComponent,
     SingleQuizComponent,
     DrTakeQuizComponent,
-    ParentTakeQuizComponent
+    ParentTakeQuizComponent,
+    DrCsvComponent
   ],
   imports: [
     BrowserModule,
@@ -90,12 +93,12 @@ const route: Routes = [
     SignUpService,
     QuestionService,
     ChoiceService,
-    CookieService,
     ShowResultService,
     QuizService,
     ResultService,
     ShowQuizService,
-    ShowQuestionService
+    ShowQuestionService,
+    CsvService
   ],
   bootstrap: [AppComponent]
 })

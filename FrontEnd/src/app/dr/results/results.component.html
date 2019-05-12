@@ -7,14 +7,16 @@
     <th>last name</th>
     <th>result</th>
     <th>quiz</th>
+    <th>csv</th>
     </thead>
     <tbody>
-    <tr *ngFor="let item of data;let i = index" (click)="seeAnswers(item.id,item.quiz)">
-      <td>{{i + 1}}</td>
-      <td>{{item.patient_first_name}}</td>
-      <td>{{item.patient_last_name}}</td>
-      <td>{{item.result}}</td>
-      <td>{{item.quiz}}</td>
+    <tr *ngFor="let item of data;let i = index" >
+      <td (click)="seeAnswers(item.id,item.quiz)">{{i + 1}}</td>
+      <td (click)="seeAnswers(item.id,item.quiz)">{{item.patient_first_name}}</td>
+      <td (click)="seeAnswers(item.id,item.quiz)">{{item.patient_last_name}}</td>
+      <td (click)="seeAnswers(item.id,item.quiz)">{{item.result}}</td>
+      <td (click)="seeAnswers(item.id,item.quiz)">{{item.quiz}}</td>
+      <td><button type="button" class="btn btn-primary">csv</button></td>
     </tr>
     </tbody>
   </table>
