@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
@@ -125,7 +126,11 @@ class CsvView(APIView):
             writer.writerows(csv_data)
 
         csvFile.close()
+        path = 'C:\\Users\\abday\\Desktop\\DataMiningGradProject\\BackEnd\\backend\\' + str(quiz_id) + '.csv'
 
-        # backend/1.csv
-        path = 'backend/' + str(quiz_id) + '.csv'
-        return Response({'data': csv_data, 'path': path})
+        file_path = path
+        file_pointer = open(file_path, "r")
+        response = HttpResponse(file_pointer, content_type='application/csv')
+        response['Content-Disposition'] = 'attachment; filename=' + str(quiz_id) + '.csv'
+
+        return response
