@@ -20,5 +20,5 @@ urlpatterns = [
     re_path(r'^choicequestion/(?P<question_id>.+)/$', views.ChoiceQuestionView.as_view()),
     re_path(r'^drlogin/$', views.DrLoginView.as_view()),
     re_path(r'^parentlogin/$', views.ParentLoginView.as_view()),
-    re_path(r'^csv/(?P<result_id>.+)/$', views.CsvView.as_view()),
+    re_path(r'^csv/(?P<quiz_id>.+)/$', views.CsvView.as_view()),
 ]

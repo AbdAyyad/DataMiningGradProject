@@ -76,8 +76,8 @@ class QuestionQuizView(generics.ListAPIView):
 
     def get_queryset(self):
         quiz_id = self.kwargs['quiz_id']
-        answers = models.Question.objects.filter(quiz=quiz_id)
-        return answers
+        questions = models.Question.objects.filter(quiz=quiz_id)
+        return questions
 
 
 class ChoiceQuestionView(generics.ListAPIView):
@@ -85,33 +85,47 @@ class ChoiceQuestionView(generics.ListAPIView):
 
     def get_queryset(self):
         question_id = self.kwargs['question_id']
-        answers = models.Choice.objects.filter(question=question_id)
-        return answers
+        choices = models.Choice.objects.filter(question=question_id)
+        return choices
 
 
 class CsvView(APIView):
     def get(self, request, *args, **kwargs):
-        result_id = self.kwargs["result_id"]
-        print(result_id)
+        quiz_id = self.kwargs["quiz_id"]
         # for testing api
-        # result = models.Result.objects.filter(id=result_id).first()
-        answers = models.Answer.objects.filter(result_id=result_id)
-        head = []
-        body = []
-        for i in range(len(answers)):
-            head.append("Q" + str(i))
+        results = models.Result.objects.filter(quiz=quiz_id)
+        questions = models.Question.objects.filter(quiz=quiz_id)
+        row = []
+        csv_data = []
 
-        for answer in answers:
-            body.append(answer.choice)
-        # csvData = [['Person', 'Age'], ['Peter', '22'], ['Jasmine', '21'], ['Sam', '24']]
-        csvData = [head, body]
+        for i in range(len(questions)):
+            row.append("Q" + str(i))
+        csv_data.append(row)
 
-        with open(str(result_id) + '.csv', 'w') as csvFile:
+        for result in results:
+            row = []
+            for question in questions:
+                answer = models.Answer.objects.filter(result_id=result.id, question_id=question.id).first()
+                if answer is None:
+                    row.append(-1)
+                else:
+                    choice = models.Choice.objects.filter(id=answer.choice_id).first()
+                    row.append(choice.score)
+            csv_data.append(row)
+
+            # example csv
+            # csv_data = [
+            #   ['Q0','Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14'],
+            #   [1.500,1.500,1.500,1.500,3.500,3.500,3.500,3.500,3.500,3.500,3.500,3.500,-1,-1,-1],
+            #   [2.500,1.500,2.500,2.500,2.500,3.500,3.500,3.500,3.500,3.500,2.500,2.500,2.500,2.500,3.500]
+            # ]
+
+        with open(str(quiz_id) + '.csv', 'w') as csvFile:
             writer = csv.writer(csvFile)
-            writer.writerows(csvData)
+            writer.writerows(csv_data)
 
         csvFile.close()
 
         # backend/1.csv
-        path = 'backend/' + str(result_id) + '.csv'
-        return Response({'head': head, 'body': body})
+        path = 'backend/' + str(quiz_id) + '.csv'
+        return Response({'data': csv_data, 'path': path})
