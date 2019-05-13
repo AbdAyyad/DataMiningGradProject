@@ -1,15 +1,19 @@
 <app-dr-navbar></app-dr-navbar>
 <div class="container">
-<table>
-  <thead>
-  <tr>
-    <th *ngFor="let head of csv.head;">{{head}}</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td *ngFor="let body of csv.body;">{{body}}</td>
-  </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>quiz</th>
+      <th>csv</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let quiz of quizzes; let i = index;">
+      <td>{{i}}</td>
+      <td>{{quiz.title}}</td>
+      <td><a class="btn btn-primary" href="http://localhost:8000/api/csv/{{quiz.id}}/">csv</a></td>
+    </tr>
+    </tbody>
+  </table>
 </div>

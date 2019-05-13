@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CsvService} from '../../../services/web/csv.service';
-import {ShowResultService} from '../../../services/component/show-result.service';
-// @ts-ignore
-import {Csv} from '../../../model/Csv';
+import {QuizService} from '../../../services/web/quiz.service';
+import {Quiz} from '../../../model/Quiz';
 
 @Component({
   selector: 'app-dr-csv',
@@ -10,18 +8,16 @@ import {Csv} from '../../../model/Csv';
   styleUrls: ['./dr-csv.component.css']
 })
 export class DrCsvComponent implements OnInit {
-  private csv: Csv;
+  private quizzes: [Quiz];
 
-  constructor(private csvService: CsvService,
-              private resultShowService: ShowResultService) {
+  constructor(private quizService: QuizService,
+) {
   }
 
   ngOnInit() {
-    this.csvService.getCsv(this.resultShowService.getResultId()).subscribe(
-      result => {
-        this.csv = result;
-      }
-    );
+    this.quizService.getQuizList().subscribe(result => {
+      this.quizzes = result;
+    });
   }
 
 }
