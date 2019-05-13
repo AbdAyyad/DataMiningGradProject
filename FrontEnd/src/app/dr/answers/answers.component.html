@@ -2,13 +2,17 @@
 <div class="container">
   <table class="table">
     <thead>
+    <th>#</th>
     <th>question</th>
     <th>chosen choice</th>
+    <th>update</th>
     </thead>
     <tbody>
-    <tr *ngFor="let item of data;let i = index;">
-      <td>{{getQuestionBody(item.question)}}</td>
-      <td>{{getChoiceBody(item.choice)}}</td>
+    <tr *ngFor="let item of this.showResultService.questions;let i = index;">
+      <td>{{i}}</td>
+      <td>{{item.question_body}}</td>
+      <td>{{getChoiceBody(item.id)}}</td>
+      <td><button type="button" class="btn btn-primary" (click)="updateAnswer(item.id)">update</button></td>
     </tr>
     </tbody>
   </table>

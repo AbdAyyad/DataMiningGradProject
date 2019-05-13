@@ -29,11 +29,8 @@ export class ResultsComponent implements OnInit {
     this.showResultService.setResultId(id);
     this.showResultService.fillQuestions(quizId);
     this.showResultService.fillChoices();
+    this.showResultService.fillAnswers();
     this.router.navigate(['/dr/answer']);
-  }
-
-  seeCsv(id: number) {
-    this.showResultService.setResultId(id);
   }
 
 }

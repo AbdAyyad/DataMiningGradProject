@@ -12,42 +12,36 @@ import {QuestionService} from '../../../services/web/question.service';
   styleUrls: ['./answers.component.css']
 })
 export class AnswersComponent implements OnInit {
-  private data: [Answer];
 
   constructor(private answerService: AnswerService,
-              private showResultService: ShowResultService,
-              private questionService: QuestionService) {
+              private showResultService: ShowResultService) {
   }
 
-  getQuestionBody(id: number): string {
-    let str = '';
-    this.showResultService.questions.forEach(question => {
-      if (question.id === id) {
-        str = question.question_body;
-        return;
+  getChoiceBody(questionId: number): string {
+    let str = 'not answered';
+    let choiceId = 0;
+    for (const answer of this.showResultService.answers) {
+      if (answer.question === questionId) {
+        choiceId = answer.choice;
+        break;
       }
-    });
-    return str;
-  }
+    }
 
-  getChoiceBody(id: number): string {
-    let str = '';
-    this.showResultService.choices.forEach(choice => {
-      if (choice.id === id) {
+    for (const choice of this.showResultService.choices) {
+      if (choice.id === choiceId) {
         str = choice.title;
-        return;
+        break;
       }
-    });
+    }
+
     return str;
   }
 
   ngOnInit() {
-    this.answerService.getAnswers(this.showResultService.getResultId()).subscribe(
-      result => {
-        console.log(this.showResultService.getResultId());
-        this.data = result;
-      }
-    );
+  }
+
+  updateAnswer(questionId: number) {
+
   }
 
 }

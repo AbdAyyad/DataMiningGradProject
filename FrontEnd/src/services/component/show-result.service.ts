@@ -4,6 +4,8 @@ import {QuestionService} from '../web/question.service';
 import {Question} from '../../model/Question';
 import {ChoiceService} from '../web/choice.service';
 import {Choice} from '../../model/Choice';
+import {Answer} from '../../model/Answer';
+import {AnswerService} from '../web/answer.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,11 @@ export class ShowResultService {
   private _patentSex: number;
   private _questions;
   private _choices;
+  private _answers;
 
   constructor(private questionService: QuestionService,
-              private choiceService: ChoiceService) {
+              private choiceService: ChoiceService,
+              private  answerService: AnswerService) {
     this.resultId = -1;
   }
 
@@ -76,11 +80,21 @@ export class ShowResultService {
     });
   }
 
+  fillAnswers() {
+    this.answerService.getAnswers(this.resultId).subscribe(result => {
+      this._answers = result;
+    });
+  }
+
   get questions(): [Question] {
     return this._questions;
   }
 
   get choices(): [Choice] {
     return this._choices;
+  }
+
+  get answers(): [Answer] {
+    return this._answers;
   }
 }
