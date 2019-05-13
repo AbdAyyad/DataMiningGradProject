@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework import generics
 import csv
+import os
 
 from . import models
 from . import serializers
@@ -121,12 +122,14 @@ class CsvView(APIView):
             #   [2.500,1.500,2.500,2.500,2.500,3.500,3.500,3.500,3.500,3.500,2.500,2.500,2.500,2.500,3.500]
             # ]
 
-        with open(str(quiz_id) + '.csv', 'w') as csvFile:
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(BASE_DIR, str(quiz_id) + '.csv')
+
+        with open(path, 'w') as csvFile:
             writer = csv.writer(csvFile)
             writer.writerows(csv_data)
 
         csvFile.close()
-        path = 'C:\\Users\\abday\\Desktop\\DataMiningGradProject\\BackEnd\\backend\\' + str(quiz_id) + '.csv'
 
         file_path = path
         file_pointer = open(file_path, "r")
