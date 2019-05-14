@@ -1,0 +1,14 @@
+<app-dr-navbar></app-dr-navbar>
+<div class="container arabic">
+  <p class="arabic">{{question.question_body}}</p>
+
+  <div class="radio arabic" *ngFor="let choice of choices;">
+    <label on-mouseenter="showDescription(choice.id)" on-mouseleave="hideDescription(choice.id)"
+           (click)=" commitQuestion(choice)">
+      <input type="radio" name="opt">
+      {{choice.title}}
+      <span *ngIf="choiceMap.get(choice.id)" class="text-primary">{{choice.description}}</span>
+    </label>
+  </div>
+  <button type="button" class="btn btn-primary" [disabled]="!flag" (click)="submit()">update the answer</button>
+</div>

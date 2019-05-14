@@ -3,6 +3,7 @@ import {Result} from '../../../model/Result';
 import {ResultService} from '../../../services/web/result.service';
 import {ShowResultService} from '../../../services/component/show-result.service';
 import {Router} from '@angular/router';
+import {UpdateAnswerService} from '../../../services/component/update-answer.service';
 
 @Component({
   selector: 'app-results',
@@ -14,6 +15,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(private resultService: ResultService,
               private showResultService: ShowResultService,
+              private updateAnswerService: UpdateAnswerService,
               private router: Router) {
   }
 
@@ -27,6 +29,7 @@ export class ResultsComponent implements OnInit {
 
   seeAnswers(id: number, quizId: number) {
     this.showResultService.setResultId(id);
+    this.updateAnswerService.resultId = id;
     this.showResultService.fillQuestions(quizId);
     this.showResultService.fillChoices();
     this.showResultService.fillAnswers();

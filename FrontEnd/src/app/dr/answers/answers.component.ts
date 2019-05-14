@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Answer} from '../../../model/Answer';
 import {AnswerService} from '../../../services/web/answer.service';
 import {ShowResultService} from '../../../services/component/show-result.service';
-import {Observable} from 'rxjs';
-import {Question} from '../../../model/Question';
-import {QuestionService} from '../../../services/web/question.service';
+import {Router} from '@angular/router';
+import {UpdateAnswerService} from '../../../services/component/update-answer.service';
 
 @Component({
   selector: 'app-answers',
@@ -14,7 +12,9 @@ import {QuestionService} from '../../../services/web/question.service';
 export class AnswersComponent implements OnInit {
 
   constructor(private answerService: AnswerService,
-              private showResultService: ShowResultService) {
+              private showResultService: ShowResultService,
+              private updateAnswerService: UpdateAnswerService,
+              private router: Router) {
   }
 
   getChoiceBody(questionId: number): string {
@@ -41,7 +41,15 @@ export class AnswersComponent implements OnInit {
   }
 
   updateAnswer(questionId: number) {
-
+    let answerId = 0;
+    for (const answer of this.showResultService.answers) {
+      if (answer.question === questionId) {
+        answerId = answer.id;
+      }
+    }
+    this.updateAnswerService.answerId = answerId;
+    this.updateAnswerService.questionId = questionId;
+    this.router.navigate(['/dr/answer/update']);
   }
 
 }

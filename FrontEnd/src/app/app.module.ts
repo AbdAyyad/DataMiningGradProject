@@ -38,6 +38,7 @@ import {DrTakeQuizComponent} from './dr/dr-take-quiz/dr-take-quiz.component';
 import {ParentTakeQuizComponent} from './parent/parent-take-quiz/parent-take-quiz.component';
 import {DrCsvComponent} from './dr/dr-csv/dr-csv.component';
 import {CsvService} from '../services/web/csv.service';
+import {UpdateAnswerComponent} from './dr/update-answer/update-answer.component';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -47,6 +48,7 @@ const route: Routes = [
   {path: 'dr/result', component: ResultsComponent, canActivate: [DrGuardService]},
   {path: 'dr/submit', component: SubmitComponent, canActivate: [DrGuardService]},
   {path: 'dr/answer', component: AnswersComponent, canActivate: [DrGuardService]},
+  {path: 'dr/answer/update', component: UpdateAnswerComponent, canActivate: [DrGuardService]},
   {path: 'dr/csv', component: DrCsvComponent, canActivate: [DrGuardService]},
   {path: 'dr/quiz', component: DrAllQuizComponent, canActivate: [DrGuardService]},
   {path: 'dr/take', component: DrTakeQuizComponent, canActivate: [DrGuardService]},
@@ -77,7 +79,8 @@ const route: Routes = [
     SingleQuizComponent,
     DrTakeQuizComponent,
     ParentTakeQuizComponent,
-    DrCsvComponent
+    DrCsvComponent,
+    UpdateAnswerComponent
   ],
   imports: [
     BrowserModule,

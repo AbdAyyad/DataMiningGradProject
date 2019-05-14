@@ -87,7 +87,8 @@ export class SingleQuizComponent implements OnInit {
     this.answers[this.questionIdx] = {
       choice: choice.id,
       question: this.question.id,
-      result: 0
+      result: 0,
+      id: -1
     };
     this.totalScore[this.questionIdx] = choice.score;
   }
