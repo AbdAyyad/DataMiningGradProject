@@ -39,7 +39,7 @@ import {ParentTakeQuizComponent} from './parent/parent-take-quiz/parent-take-qui
 import {DrCsvComponent} from './dr/dr-csv/dr-csv.component';
 import {CsvService} from '../services/web/csv.service';
 import {UpdateAnswerComponent} from './dr/update-answer/update-answer.component';
-import {KnnService} from '../services/web/knn.service';
+import {AiService} from '../services/web/ai.service';
 import {AboutComponent} from './about/about.component';
 import {WelcomeAboutComponent} from './welcome-about/welcome-about.component';
 import {DrAboutComponent} from './dr/dr-about/dr-about.component';
@@ -114,7 +114,7 @@ const route: Routes = [
     ShowQuizService,
     ShowQuestionService,
     CsvService,
-    KnnService
+    AiService
   ],
   bootstrap: [AppComponent]
 })

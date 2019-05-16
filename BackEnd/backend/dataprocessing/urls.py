@@ -22,4 +22,5 @@ urlpatterns = [
     re_path(r'^parentlogin/$', views.ParentLoginView.as_view()),
     re_path(r'^csv/(?P<quiz_id>.+)/$', views.CsvView.as_view()),
     re_path(r'^knn/(?P<quiz_id>.+)/$', views.KnnView.as_view()),
+    re_path(r'^svm/(?P<quiz_id>.+)/$', views.SvmView.as_view()),
 ]

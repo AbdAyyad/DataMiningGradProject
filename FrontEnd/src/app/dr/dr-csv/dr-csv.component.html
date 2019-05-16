@@ -7,6 +7,7 @@
       <th>quiz</th>
       <th>csv</th>
       <th>knn</th>
+      <th>svm</th>
     </tr>
     </thead>
     <tbody>
@@ -31,7 +32,33 @@
                 </button>
               </div>
               <div class="modal-body">
-                KNN = {{knn}}
+                KNN = {{percentage}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <!--  button  -->
+        <button class="btn btn-primary" (click)="setSvm(quiz.id,modal)">svm
+        </button>
+        <button type="button" data-toggle="modal" data-target="#svmModal" hidden #modal>modal</button>
+        <!-- Modal -->
+        <div class="modal fade" id="svmModal" tabindex="-1" role="dialog" aria-labelledby="svmModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="svmModalLabel">SVM Value</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                SVM = {{percentage}}
               </div>
               <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>

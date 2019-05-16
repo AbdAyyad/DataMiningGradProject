@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizService} from '../../../services/web/quiz.service';
 import {Quiz} from '../../../model/Quiz';
-import {KnnService} from '../../../services/web/knn.service';
+import {AiService} from '../../../services/web/ai.service';
 
 @Component({
   selector: 'app-dr-csv',
@@ -10,10 +10,10 @@ import {KnnService} from '../../../services/web/knn.service';
 })
 export class DrCsvComponent implements OnInit {
   private quizzes: [Quiz];
-  private knn: number;
+  private percentage: number;
 
   constructor(private quizService: QuizService,
-              private knnService: KnnService) {
+              private knnService: AiService) {
   }
 
   ngOnInit() {
@@ -24,8 +24,14 @@ export class DrCsvComponent implements OnInit {
 
   setKnn(quizId: number, btn: HTMLButtonElement) {
     this.knnService.getKnn(quizId).subscribe(result => {
-      console.log(result);
-      this.knn = result.acc;
+      this.percentage = result.acc;
+      btn.click();
+    });
+  }
+
+  setSvm(quizId: number, btn: HTMLButtonElement) {
+    this.knnService.getSvm(quizId).subscribe(result => {
+      this.percentage = result.acc;
       btn.click();
     });
   }

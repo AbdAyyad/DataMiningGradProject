@@ -12,6 +12,8 @@ from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 import numpy as np
 from sklearn import linear_model, preprocessing
+from sklearn.metrics import confusion_matrix
+
 
 from . import models
 from . import serializers
@@ -190,3 +192,56 @@ def generate_csv(quiz_id):
         writer.writerows(csv_data)
 
     csvFile.close()
+
+
+class SvmView(APIView):
+    def get(self, request, *args, **kwargs):
+        quiz_id = self.kwargs["quiz_id"]
+
+        generate_csv(quiz_id)
+
+        data = pd.read_csv(quiz_id + '.csv')
+
+        le = preprocessing.LabelEncoder()
+        A1 = le.fit_transform(list(data["A1"]))
+        A2 = le.fit_transform(list(data["A2"]))
+        A3 = le.fit_transform(list(data["A3"]))
+        A4 = le.fit_transform(list(data["A4"]))
+        A5 = le.fit_transform(list(data["A5"]))
+        A6 = le.fit_transform(list(data["A6"]))
+        A7 = le.fit_transform(list(data["A7"]))
+        A8 = le.fit_transform(list(data["A8"]))
+        A9 = le.fit_transform(list(data["A9"]))
+        A10 = le.fit_transform(list(data["A10"]))
+        cls = le.fit_transform(list(data["Class/ASD"]))
+
+        predict = "Class/ASD"
+
+        X = list(zip(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10))
+        y = list(cls)
+
+        X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
+
+        # training a linear SVM classifier
+        from sklearn.svm import SVC
+        svm_model_linear = SVC(kernel='linear', C=1).fit(X_train, y_train)
+        svm_predictions = svm_model_linear.predict(X_test)
+
+        # model accuracy for X_test
+        accuracy = svm_model_linear.score(X_test, y_test)
+
+        # creating a confusion matrix
+        cm = confusion_matrix(y_test, svm_predictions)
+        summ = 0
+        total = 0
+
+        for i in range(len(cm)):
+
+            for x in range(i + 1):
+                if i == x:
+                    summ += cm[i][x]
+
+        L = list(cm)
+        total = (sum(sum(L)))
+
+        return Response({'acc': float(summ) / total})
