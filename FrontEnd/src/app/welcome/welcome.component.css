@@ -1,0 +1,19 @@
+.jumbotron{
+  background-image: url("/assets/home-banner.jpg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 0;
+  padding-bottom: 54px;
+  height: 910px;
+}
+
+.about-area {
+  background-color: white;
+  height: 150px;
+}
+
+#down{
+  margin-top: 500px;
+}
