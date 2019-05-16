@@ -93,7 +93,7 @@ export class SingleQuizComponent implements OnInit {
     this.totalScore[this.questionIdx] = choice.score;
   }
 
-  submitResult() {
+  submitResult(btn: HTMLButtonElement) {
     let total = 0;
     this.totalScore.forEach(score => {
       total += +score;
@@ -119,6 +119,7 @@ export class SingleQuizComponent implements OnInit {
           answer => {
             answer.result = reply.id;
             this.answerService.postAnswer(answer).subscribe();
+            btn.click();
           }
         );
       }

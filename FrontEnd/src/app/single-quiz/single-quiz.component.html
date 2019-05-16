@@ -16,7 +16,26 @@
   <button type="button" class="btn btn-primary nextButton" *ngIf="!submitFlag; else submitArea" (click)="next()">Next
   </button>
   <ng-template #submitArea>
-    <button type="button" (click)="submitResult()" class="btn btn-primary nextButton">Submit</button>
+    <button type="button" (click)="submitResult(modalbtn)" class="btn btn-primary nextButton">Submit</button>
+    <!-- Button trigger modal -->
+    <button hidden #modalbtn type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="lead">your score is {{total}}</p>
+            <p class="lead" *ngIf="total>=36">you are sick</p>
+            <p class="lead" *ngIf="total<36">you are not sick</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-template>
-  <h3 *ngIf="seeResult">your score is {{total}}</h3>
 </div>
