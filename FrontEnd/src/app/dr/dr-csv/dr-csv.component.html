@@ -6,13 +6,40 @@
       <th>#</th>
       <th>quiz</th>
       <th>csv</th>
+      <th>knn</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let quiz of quizzes; let i = index;">
-      <td>{{i}}</td>
+      <td>{{i + 1}}</td>
       <td>{{quiz.title}}</td>
       <td><a class="btn btn-primary" href="http://localhost:8000/api/csv/{{quiz.id}}/">csv</a></td>
+      <td>
+        <!--  button  -->
+        <button class="btn btn-primary" (click)="setKnn(quiz.id,modal)">knn
+        </button>
+        <button type="button" data-toggle="modal" data-target="#knnModal" hidden #modal>modal</button>
+        <!-- Modal -->
+        <div class="modal fade" id="knnModal" tabindex="-1" role="dialog" aria-labelledby="knnModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="knnModalLabel">KNN Value</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                KNN = {{knn}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
     </tr>
     </tbody>
   </table>

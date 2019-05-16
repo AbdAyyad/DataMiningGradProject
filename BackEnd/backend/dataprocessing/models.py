@@ -55,7 +55,7 @@ class Result(models.Model):
     patient_sex = models.IntegerField()
     patient_birth_date = models.CharField(max_length=25)
     time_stamp = models.CharField(max_length=25)
-    result = models.DecimalField(decimal_places=3, max_digits=5)
+    result = models.DecimalField(decimal_places=4, max_digits=7)
     quiz = models.IntegerField()
 
 

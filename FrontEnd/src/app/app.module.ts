@@ -39,6 +39,7 @@ import {ParentTakeQuizComponent} from './parent/parent-take-quiz/parent-take-qui
 import {DrCsvComponent} from './dr/dr-csv/dr-csv.component';
 import {CsvService} from '../services/web/csv.service';
 import {UpdateAnswerComponent} from './dr/update-answer/update-answer.component';
+import {KnnService} from '../services/web/knn.service';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -101,7 +102,8 @@ const route: Routes = [
     ResultService,
     ShowQuizService,
     ShowQuestionService,
-    CsvService
+    CsvService,
+    KnnService
   ],
   bootstrap: [AppComponent]
 })
