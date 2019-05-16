@@ -32,4 +32,4 @@ for front end section<br />
 1-for installing dependencies<br />
 npm install<br />
 2-running server<br />
-ng s
+npm start
