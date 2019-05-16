@@ -36,4 +36,11 @@ export class DrCsvComponent implements OnInit {
     });
   }
 
+  setNB(quizId: number, btn: HTMLButtonElement) {
+  this.knnService.getNaiveBayez(quizId).subscribe(result => {
+  this.percentage = result.acc;
+  btn.click();
+});
+}
+
 }

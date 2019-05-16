@@ -14,7 +14,6 @@ import numpy as np
 from sklearn import linear_model, preprocessing
 from sklearn.metrics import confusion_matrix
 
-
 from . import models
 from . import serializers
 
@@ -245,3 +244,44 @@ class SvmView(APIView):
         total = (sum(sum(L)))
 
         return Response({'acc': float(summ) / total})
+
+
+class NaiveBayes(APIView):
+    def get(self, request, *args, **kwargs):
+        quiz_id = self.kwargs["quiz_id"]
+
+        generate_csv(quiz_id)
+
+        data = pd.read_csv(quiz_id + '.csv')
+
+        le = preprocessing.LabelEncoder()
+        A1 = le.fit_transform(list(data["A1"]))
+        A2 = le.fit_transform(list(data["A2"]))
+        A3 = le.fit_transform(list(data["A3"]))
+        A4 = le.fit_transform(list(data["A4"]))
+        A5 = le.fit_transform(list(data["A5"]))
+        A6 = le.fit_transform(list(data["A6"]))
+        A7 = le.fit_transform(list(data["A7"]))
+        A8 = le.fit_transform(list(data["A8"]))
+        A9 = le.fit_transform(list(data["A9"]))
+        A10 = le.fit_transform(list(data["A10"]))
+        cls = le.fit_transform(list(data["Class/ASD"]))
+
+        predict = "Class/ASD"
+
+        X = list(zip(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10))
+        y = list(cls)
+
+        X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.1)
+
+        from sklearn.naive_bayes import GaussianNB
+        gnb = GaussianNB()
+        gnb.fit(X_train, y_train)
+
+        # making predictions on the testing set
+        y_pred = gnb.predict(X_test)
+
+        # comparing actual response values (y_test) with predicted response values (y_pred)
+        from sklearn import metrics
+
+        return Response({'acc': metrics.accuracy_score(y_test, y_pred)})

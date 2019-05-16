@@ -8,6 +8,7 @@
       <th>csv</th>
       <th>knn</th>
       <th>svm</th>
+      <th>naive bayez</th>
     </tr>
     </thead>
     <tbody>
@@ -17,9 +18,9 @@
       <td><a class="btn btn-primary" href="http://localhost:8000/api/csv/{{quiz.id}}/">csv</a></td>
       <td>
         <!--  button  -->
-        <button class="btn btn-primary" (click)="setKnn(quiz.id,modal)">knn
+        <button class="btn btn-primary" (click)="setKnn(quiz.id,modal1)">knn
         </button>
-        <button type="button" data-toggle="modal" data-target="#knnModal" hidden #modal>modal</button>
+        <button type="button" data-toggle="modal" data-target="#knnModal" hidden #modal1>modal</button>
         <!-- Modal -->
         <div class="modal fade" id="knnModal" tabindex="-1" role="dialog" aria-labelledby="knnModalLabel"
              aria-hidden="true">
@@ -43,9 +44,9 @@
       </td>
       <td>
         <!--  button  -->
-        <button class="btn btn-primary" (click)="setSvm(quiz.id,modal)">svm
+        <button class="btn btn-primary" (click)="setSvm(quiz.id,modal2)">svm
         </button>
-        <button type="button" data-toggle="modal" data-target="#svmModal" hidden #modal>modal</button>
+        <button type="button" data-toggle="modal" data-target="#svmModal" hidden #modal2>modal</button>
         <!-- Modal -->
         <div class="modal fade" id="svmModal" tabindex="-1" role="dialog" aria-labelledby="svmModalLabel"
              aria-hidden="true">
@@ -67,6 +68,33 @@
           </div>
         </div>
       </td>
+      <td>
+        <!--  button  -->
+        <button class="btn btn-primary" (click)="setNB(quiz.id,modal3)">naive bayez
+        </button>
+        <button type="button" data-toggle="modal" data-target="#nbModal" hidden #modal3>modal</button>
+        <!-- Modal -->
+        <div class="modal fade" id="nbModal" tabindex="-1" role="dialog" aria-labelledby="nbModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="nbModalLabel">Naive Bayez Value</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                naive Bayez = {{percentage}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+
     </tr>
     </tbody>
   </table>
