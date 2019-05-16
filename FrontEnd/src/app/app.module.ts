@@ -40,12 +40,18 @@ import {DrCsvComponent} from './dr/dr-csv/dr-csv.component';
 import {CsvService} from '../services/web/csv.service';
 import {UpdateAnswerComponent} from './dr/update-answer/update-answer.component';
 import {KnnService} from '../services/web/knn.service';
+import {AboutComponent} from './about/about.component';
+import {WelcomeAboutComponent} from './welcome-about/welcome-about.component';
+import {DrAboutComponent} from './dr/dr-about/dr-about.component';
+import {ParentAboutComponent} from './parent/parent-about/parent-about.component';
 
 const route: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'about', component: WelcomeAboutComponent},
   {path: 'sign-complete', component: SignUpCompleteComponent},
   {path: 'dr/new', component: AddQuizComponent, canActivate: [DrGuardService]},
+  {path: 'dr/about', component: DrAboutComponent, canActivate: [DrGuardService]},
   {path: 'dr/result', component: ResultsComponent, canActivate: [DrGuardService]},
   {path: 'dr/submit', component: SubmitComponent, canActivate: [DrGuardService]},
   {path: 'dr/answer', component: AnswersComponent, canActivate: [DrGuardService]},
@@ -53,6 +59,7 @@ const route: Routes = [
   {path: 'dr/csv', component: DrCsvComponent, canActivate: [DrGuardService]},
   {path: 'dr/quiz', component: DrAllQuizComponent, canActivate: [DrGuardService]},
   {path: 'dr/take', component: DrTakeQuizComponent, canActivate: [DrGuardService]},
+  {path: 'parent/about', component: ParentAboutComponent, canActivate: [ParentGuardService]},
   {path: 'parent/quiz', component: ParentAllQuizComponent, canActivate: [ParentGuardService]},
   {path: 'parent/take', component: ParentTakeQuizComponent, canActivate: [ParentGuardService]},
   {path: '**', component: NotFoundComponent},
@@ -81,7 +88,11 @@ const route: Routes = [
     DrTakeQuizComponent,
     ParentTakeQuizComponent,
     DrCsvComponent,
-    UpdateAnswerComponent
+    UpdateAnswerComponent,
+    AboutComponent,
+    WelcomeAboutComponent,
+    DrAboutComponent,
+    ParentAboutComponent
   ],
   imports: [
     BrowserModule,
