@@ -1,4 +1,4 @@
-.jumbotron{
+.jumbotron {
   background-image: url("/assets/home-banner.jpg");
   background-color: transparent;
   background-repeat: no-repeat;
@@ -14,6 +14,10 @@
   height: 150px;
 }
 
-#down{
-  margin-top: 500px;
+#down {
+  margin-top: 320px;
+}
+
+.title-down {
+  margin-top: 250px;
 }
